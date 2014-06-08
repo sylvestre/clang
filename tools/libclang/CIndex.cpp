@@ -39,7 +39,7 @@
 #include "llvm/ADT/Optional.h"
 #include "llvm/ADT/STLExtras.h"
 #include "llvm/ADT/StringSwitch.h"
-#include "llvm/Config/config.h"
+#include "llvm/Config/llvm-config.h"
 #include "llvm/Support/Compiler.h"
 #include "llvm/Support/CrashRecoveryContext.h"
 #include "llvm/Support/Format.h"
@@ -52,7 +52,7 @@
 #include "llvm/Support/Timer.h"
 #include "llvm/Support/raw_ostream.h"
 
-#if HAVE_PTHREAD_H
+#ifdef __APPLE__
 #include <pthread.h>
 #endif
 
@@ -1935,7 +1935,13 @@ void OMPClauseEnqueue::VisitOMPSafelenClause(const OMPSafelenClause *C) {
   Visitor->AddStmt(C->getSafelen());
 }
 
+void OMPClauseEnqueue::VisitOMPCollapseClause(const OMPCollapseClause *C) {
+  Visitor->AddStmt(C->getNumForLoops());
+}
+
 void OMPClauseEnqueue::VisitOMPDefaultClause(const OMPDefaultClause *C) { }
+
+void OMPClauseEnqueue::VisitOMPProcBindClause(const OMPProcBindClause *C) { }
 
 template<typename T>
 void OMPClauseEnqueue::VisitOMPClauseList(T *Node) {
@@ -1950,12 +1956,20 @@ void OMPClauseEnqueue::VisitOMPFirstprivateClause(
                                         const OMPFirstprivateClause *C) {
   VisitOMPClauseList(C);
 }
+void OMPClauseEnqueue::VisitOMPLastprivateClause(
+                                        const OMPLastprivateClause *C) {
+  VisitOMPClauseList(C);
+}
 void OMPClauseEnqueue::VisitOMPSharedClause(const OMPSharedClause *C) {
   VisitOMPClauseList(C);
 }
 void OMPClauseEnqueue::VisitOMPLinearClause(const OMPLinearClause *C) {
   VisitOMPClauseList(C);
   Visitor->AddStmt(C->getStep());
+}
+void OMPClauseEnqueue::VisitOMPAlignedClause(const OMPAlignedClause *C) {
+  VisitOMPClauseList(C);
+  Visitor->AddStmt(C->getAlignment());
 }
 void OMPClauseEnqueue::VisitOMPCopyinClause(const OMPCopyinClause *C) {
   VisitOMPClauseList(C);
@@ -3873,6 +3887,14 @@ CXString clang_getCursorKindSpelling(enum CXCursorKind Kind) {
     return cxstring::createRef("attribute(const)");
   case CXCursor_NoDuplicateAttr:
     return cxstring::createRef("attribute(noduplicate)");
+  case CXCursor_CUDAConstantAttr:
+    return cxstring::createRef("attribute(constant)");
+  case CXCursor_CUDADeviceAttr:
+    return cxstring::createRef("attribute(device)");
+  case CXCursor_CUDAGlobalAttr:
+    return cxstring::createRef("attribute(global)");
+  case CXCursor_CUDAHostAttr:
+    return cxstring::createRef("attribute(host)");
   case CXCursor_PreprocessingDirective:
     return cxstring::createRef("preprocessing directive");
   case CXCursor_MacroDefinition:
@@ -5692,14 +5714,13 @@ static void annotatePreprocessorTokens(CXTranslationUnit TU,
         break;
 
       MacroInfo *MI = 0;
-      if (Tok.is(tok::raw_identifier) &&
-          StringRef(Tok.getRawIdentifierData(), Tok.getLength()) == "define") {
+      if (Tok.is(tok::raw_identifier) && Tok.getRawIdentifier() == "define") {
         if (lexNext(Lex, Tok, NextIdx, NumTokens))
           break;
 
         if (Tok.is(tok::raw_identifier)) {
-          StringRef Name(Tok.getRawIdentifierData(), Tok.getLength());
-          IdentifierInfo &II = PP.getIdentifierTable().get(Name);
+          IdentifierInfo &II =
+              PP.getIdentifierTable().get(Tok.getRawIdentifier());
           SourceLocation MappedTokLoc =
               CXXUnit->mapLocationToPreamble(Tok.getLocation());
           MI = getMacroInfo(II, MappedTokLoc, TU);
@@ -6327,6 +6348,26 @@ CXModule clang_Cursor_getModule(CXCursor C) {
   return 0;
 }
 
+CXModule clang_getModuleForFile(CXTranslationUnit TU, CXFile File) {
+  if (isNotUsableTU(TU)) {
+    LOG_BAD_TU(TU);
+    return nullptr;
+  }
+  if (!File)
+    return nullptr;
+  FileEntry *FE = static_cast<FileEntry *>(File);
+  
+  ASTUnit &Unit = *cxtu::getASTUnit(TU);
+  HeaderSearch &HS = Unit.getPreprocessor().getHeaderSearchInfo();
+  ModuleMap::KnownHeader Header = HS.findModuleForHeader(FE);
+  
+  if (Module *Mod = Header.getModule()) {
+    if (Header.getRole() != ModuleMap::ExcludedHeader)
+      return Mod;
+  }
+  return nullptr;
+}
+
 CXFile clang_Module_getASTFile(CXModule CXMod) {
   if (!CXMod)
     return 0;
@@ -6353,6 +6394,13 @@ CXString clang_Module_getFullName(CXModule CXMod) {
     return cxstring::createEmpty();
   Module *Mod = static_cast<Module*>(CXMod);
   return cxstring::createDup(Mod->getFullModuleName());
+}
+
+int clang_Module_isSystem(CXModule CXMod) {
+  if (!CXMod)
+    return 0;
+  Module *Mod = static_cast<Module*>(CXMod);
+  return Mod->IsSystem;
 }
 
 unsigned clang_Module_getNumTopLevelHeaders(CXTranslationUnit TU,
@@ -6790,8 +6838,7 @@ MacroDefinition *cxindex::checkForMacroInMacroDefinition(const MacroInfo *MI,
   if (!PPRec)
     return 0;
 
-  StringRef Name(Tok.getRawIdentifierData(), Tok.getLength());
-  IdentifierInfo &II = PP.getIdentifierTable().get(Name);
+  IdentifierInfo &II = PP.getIdentifierTable().get(Tok.getRawIdentifier());
   if (!II.hadMacroDefinition())
     return 0;
 
@@ -6919,7 +6966,7 @@ cxindex::Logger::~Logger() {
   OS << "[libclang:" << Name << ':';
 
   // FIXME: Portability.
-#if HAVE_PTHREAD_H && __APPLE__
+#ifdef __APPLE__
   mach_port_t tid = pthread_mach_thread_np(pthread_self());
   OS << tid << ':';
 #endif

@@ -21,7 +21,7 @@
 #include "clang/Basic/SourceManager.h"
 #include "clang/Lex/Lexer.h"
 #include "llvm/ADT/SmallString.h"
-#include "llvm/Config/config.h"
+#include "llvm/Config/llvm-config.h"
 #include "llvm/Support/FileSystem.h"
 #include "llvm/Support/raw_ostream.h"
 using namespace clang;
@@ -340,7 +340,7 @@ bool Rewriter::ReplaceStmt(Stmt *From, Stmt *To) {
   // Get the new text.
   std::string SStr;
   llvm::raw_string_ostream S(SStr);
-  To->printPretty(S, 0, PrintingPolicy(*LangOpts));
+  To->printPretty(S, nullptr, PrintingPolicy(*LangOpts));
   const std::string &Str = S.str();
 
   ReplaceText(From->getLocStart(), Size, Str);
@@ -350,7 +350,7 @@ bool Rewriter::ReplaceStmt(Stmt *From, Stmt *To) {
 std::string Rewriter::ConvertToString(Stmt *From) {
   std::string SStr;
   llvm::raw_string_ostream S(SStr);
-  From->printPretty(S, 0, PrintingPolicy(*LangOpts));
+  From->printPretty(S, nullptr, PrintingPolicy(*LangOpts));
   return S.str();
 }
 

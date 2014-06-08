@@ -50,7 +50,7 @@ static bool ParseScanList(FormatStringHandler &H,
     }
   }
 
-  // Special case: "]^" are the first characters.
+  // Special case: "^]" are the first characters.
   if (I + 1 != E && I[0] == '^' && I[1] == ']') {
     I += 2;
     if (I == E) {
@@ -82,7 +82,7 @@ static ScanfSpecifierResult ParseScanfSpecifier(FormatStringHandler &H,
   
   using namespace clang::analyze_scanf;
   const char *I = Beg;
-  const char *Start = 0;
+  const char *Start = nullptr;
   UpdateOnReturn <const char*> UpdateBeg(Beg, I);
 
     // Look for a '%' character that indicates the start of a format specifier.

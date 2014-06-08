@@ -60,6 +60,7 @@ enum TokenType {
   TT_PointerOrReference,
   TT_PureVirtualSpecifier,
   TT_RangeBasedForLoopColon,
+  TT_RegexLiteral,
   TT_StartOfName,
   TT_TemplateCloser,
   TT_TemplateOpener,
@@ -102,13 +103,14 @@ struct FormatToken {
         IsFirst(false), MustBreakBefore(false), IsUnterminatedLiteral(false),
         BlockKind(BK_Unknown), Type(TT_Unknown), SpacesRequiredBefore(0),
         CanBreakBefore(false), ClosesTemplateDeclaration(false),
-        ParameterCount(0), PackingKind(PPK_Inconclusive), TotalLength(0),
-        UnbreakableTailLength(0), BindingStrength(0), NestingLevel(0),
-        SplitPenalty(0), LongestObjCSelectorName(0), FakeRParens(0),
+        ParameterCount(0), BlockParameterCount(0),
+        PackingKind(PPK_Inconclusive), TotalLength(0), UnbreakableTailLength(0),
+        BindingStrength(0), NestingLevel(0), SplitPenalty(0),
+        LongestObjCSelectorName(0), FakeRParens(0),
         StartsBinaryExpression(false), EndsBinaryExpression(false),
         OperatorIndex(0), LastOperator(false),
         PartOfMultiVariableDeclStmt(false), IsForEachMacro(false),
-        MatchingParen(NULL), Previous(NULL), Next(NULL),
+        MatchingParen(nullptr), Previous(nullptr), Next(nullptr),
         Decision(FD_Unformatted), Finalized(false) {}
 
   /// \brief The \c Token.
@@ -189,6 +191,10 @@ struct FormatToken {
   /// 0 parameters from functions with 1 parameter. Thus, we can simply count
   /// the number of commas.
   unsigned ParameterCount;
+
+  /// \brief Number of parameters that are nested blocks,
+  /// if this is "(", "[" or "<".
+  unsigned BlockParameterCount;
 
   /// \brief A token can have a special role that can carry extra information
   /// about the token's formatting.
@@ -353,7 +359,7 @@ struct FormatToken {
   /// \brief Returns the previous token ignoring comments.
   FormatToken *getPreviousNonComment() const {
     FormatToken *Tok = Previous;
-    while (Tok != NULL && Tok->is(tok::comment))
+    while (Tok && Tok->is(tok::comment))
       Tok = Tok->Previous;
     return Tok;
   }
@@ -361,7 +367,7 @@ struct FormatToken {
   /// \brief Returns the next token ignoring comments.
   const FormatToken *getNextNonComment() const {
     const FormatToken *Tok = Next;
-    while (Tok != NULL && Tok->is(tok::comment))
+    while (Tok && Tok->is(tok::comment))
       Tok = Tok->Next;
     return Tok;
   }
@@ -454,7 +460,9 @@ public:
                            bool DryRun) override;
 
   /// \brief Adds \p Token as the next comma to the \c CommaSeparated list.
-  void CommaFound(const FormatToken *Token) override { Commas.push_back(Token);}
+  void CommaFound(const FormatToken *Token) override {
+    Commas.push_back(Token);
+  }
 
 private:
   /// \brief A struct that holds information on how to format a given list with

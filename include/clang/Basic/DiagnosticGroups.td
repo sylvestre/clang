@@ -186,6 +186,10 @@ def IncompatiblePointerTypes
     [IncompatiblePointerTypesDiscardsQualifiers]>;
 def IncompleteUmbrella : DiagGroup<"incomplete-umbrella">;
 def IncompleteModule : DiagGroup<"incomplete-module", [IncompleteUmbrella]>;
+def NonModularIncludeInFrameworkModule
+  : DiagGroup<"non-modular-include-in-framework-module">;
+def NonModularIncludeInModule : DiagGroup<"non-modular-include-in-module",
+                                          [NonModularIncludeInFrameworkModule]>;
 def InvalidNoreturn : DiagGroup<"invalid-noreturn">;
 def InvalidSourceEncoding : DiagGroup<"invalid-source-encoding">;
 def KNRPromotedParameter : DiagGroup<"knr-promoted-parameter">;
@@ -238,6 +242,7 @@ def OverlengthStrings : DiagGroup<"overlength-strings">;
 def OverloadedVirtual : DiagGroup<"overloaded-virtual">;
 def PrivateExtern : DiagGroup<"private-extern">;
 def SelTypeCast : DiagGroup<"cast-of-sel-type">;
+def FunctionDefInObjCContainer : DiagGroup<"function-def-in-objc-container">;
 def BadFunctionCast : DiagGroup<"bad-function-cast">;
 def ObjCPropertyImpl : DiagGroup<"objc-property-implementation">;
 def ObjCPropertyNoAttribute : DiagGroup<"objc-property-no-attribute">;
@@ -421,6 +426,7 @@ def Visibility : DiagGroup<"visibility">;
 def ZeroLengthArray : DiagGroup<"zero-length-array">;
 def GNUZeroLineDirective : DiagGroup<"gnu-zero-line-directive">;
 def GNUZeroVariadicMacroArguments : DiagGroup<"gnu-zero-variadic-macro-arguments">;
+def Fallback : DiagGroup<"fallback">;
 
 // This covers both the deprecated case (in C++98)
 // and the extension case (in C++11 onwards).
@@ -672,6 +678,7 @@ def ASM : DiagGroup<"asm", [
 // OpenMP warnings.
 def SourceUsesOpenMP : DiagGroup<"source-uses-openmp">;
 def OpenMPClauses : DiagGroup<"openmp-clauses">;
+def OpenMPLoopForm : DiagGroup<"openmp-loop-form">;
 
 // Backend warnings.
 def BackendInlineAsm : DiagGroup<"inline-asm">;
@@ -679,6 +686,8 @@ def BackendFrameLargerThan : DiagGroup<"frame-larger-than">;
 def BackendPlugin : DiagGroup<"backend-plugin">;
 def RemarkBackendPlugin : DiagGroup<"remark-backend-plugin">;
 def BackendOptimizationRemark : DiagGroup<"pass">;
+def BackendOptimizationRemarkMissed : DiagGroup<"pass-missed">;
+def BackendOptimizationRemarkAnalysis : DiagGroup<"pass-analysis">;
 
 // Instrumentation based profiling warnings.
 def ProfileInstrOutOfDate : DiagGroup<"profile-instr-out-of-date">;

@@ -939,6 +939,110 @@
 // ARMEABIHARDFP:#define __arm 1
 // ARMEABIHARDFP:#define __arm__ 1
 
+// RUN: %clang_cc1 -E -dM -ffreestanding -triple=arm-netbsd-eabi < /dev/null | FileCheck -check-prefix ARM-NETBSD %s
+//
+// ARM-NETBSD-NOT:#define _LP64
+// ARM-NETBSD:#define __APCS_32__ 1
+// ARM-NETBSD-NOT:#define __ARMEB__ 1
+// ARM-NETBSD:#define __ARMEL__ 1
+// ARM-NETBSD:#define __ARM_ARCH_6J__ 1
+// ARM-NETBSD:#define __ARM_DWARF_EH__ 1
+// ARM-NETBSD:#define __ARM_EABI__ 1
+// ARM-NETBSD-NOT:#define __ARM_BIG_ENDIAN 1
+// ARM-NETBSD:#define __BYTE_ORDER__ __ORDER_LITTLE_ENDIAN__
+// ARM-NETBSD:#define __CHAR16_TYPE__ unsigned short
+// ARM-NETBSD:#define __CHAR32_TYPE__ unsigned int
+// ARM-NETBSD:#define __CHAR_BIT__ 8
+// ARM-NETBSD:#define __DBL_DENORM_MIN__ 4.9406564584124654e-324
+// ARM-NETBSD:#define __DBL_DIG__ 15
+// ARM-NETBSD:#define __DBL_EPSILON__ 2.2204460492503131e-16
+// ARM-NETBSD:#define __DBL_HAS_DENORM__ 1
+// ARM-NETBSD:#define __DBL_HAS_INFINITY__ 1
+// ARM-NETBSD:#define __DBL_HAS_QUIET_NAN__ 1
+// ARM-NETBSD:#define __DBL_MANT_DIG__ 53
+// ARM-NETBSD:#define __DBL_MAX_10_EXP__ 308
+// ARM-NETBSD:#define __DBL_MAX_EXP__ 1024
+// ARM-NETBSD:#define __DBL_MAX__ 1.7976931348623157e+308
+// ARM-NETBSD:#define __DBL_MIN_10_EXP__ (-307)
+// ARM-NETBSD:#define __DBL_MIN_EXP__ (-1021)
+// ARM-NETBSD:#define __DBL_MIN__ 2.2250738585072014e-308
+// ARM-NETBSD:#define __DECIMAL_DIG__ 17
+// ARM-NETBSD:#define __FLT_DENORM_MIN__ 1.40129846e-45F
+// ARM-NETBSD:#define __FLT_DIG__ 6
+// ARM-NETBSD:#define __FLT_EPSILON__ 1.19209290e-7F
+// ARM-NETBSD:#define __FLT_EVAL_METHOD__ 0
+// ARM-NETBSD:#define __FLT_HAS_DENORM__ 1
+// ARM-NETBSD:#define __FLT_HAS_INFINITY__ 1
+// ARM-NETBSD:#define __FLT_HAS_QUIET_NAN__ 1
+// ARM-NETBSD:#define __FLT_MANT_DIG__ 24
+// ARM-NETBSD:#define __FLT_MAX_10_EXP__ 38
+// ARM-NETBSD:#define __FLT_MAX_EXP__ 128
+// ARM-NETBSD:#define __FLT_MAX__ 3.40282347e+38F
+// ARM-NETBSD:#define __FLT_MIN_10_EXP__ (-37)
+// ARM-NETBSD:#define __FLT_MIN_EXP__ (-125)
+// ARM-NETBSD:#define __FLT_MIN__ 1.17549435e-38F
+// ARM-NETBSD:#define __FLT_RADIX__ 2
+// ARM-NETBSD:#define __INT16_TYPE__ short
+// ARM-NETBSD:#define __INT32_TYPE__ int
+// ARM-NETBSD:#define __INT64_C_SUFFIX__ LL
+// ARM-NETBSD:#define __INT64_TYPE__ long long int
+// ARM-NETBSD:#define __INT8_TYPE__ char
+// ARM-NETBSD:#define __INTMAX_MAX__ 9223372036854775807LL
+// ARM-NETBSD:#define __INTMAX_TYPE__ long long int
+// ARM-NETBSD:#define __INTMAX_WIDTH__ 64
+// ARM-NETBSD:#define __INTPTR_TYPE__ long int
+// ARM-NETBSD:#define __INTPTR_WIDTH__ 32
+// ARM-NETBSD:#define __INT_MAX__ 2147483647
+// ARM-NETBSD:#define __LDBL_DENORM_MIN__ 4.9406564584124654e-324L
+// ARM-NETBSD:#define __LDBL_DIG__ 15
+// ARM-NETBSD:#define __LDBL_EPSILON__ 2.2204460492503131e-16L
+// ARM-NETBSD:#define __LDBL_HAS_DENORM__ 1
+// ARM-NETBSD:#define __LDBL_HAS_INFINITY__ 1
+// ARM-NETBSD:#define __LDBL_HAS_QUIET_NAN__ 1
+// ARM-NETBSD:#define __LDBL_MANT_DIG__ 53
+// ARM-NETBSD:#define __LDBL_MAX_10_EXP__ 308
+// ARM-NETBSD:#define __LDBL_MAX_EXP__ 1024
+// ARM-NETBSD:#define __LDBL_MAX__ 1.7976931348623157e+308L
+// ARM-NETBSD:#define __LDBL_MIN_10_EXP__ (-307)
+// ARM-NETBSD:#define __LDBL_MIN_EXP__ (-1021)
+// ARM-NETBSD:#define __LDBL_MIN__ 2.2250738585072014e-308L
+// ARM-NETBSD:#define __LITTLE_ENDIAN__ 1
+// ARM-NETBSD:#define __LONG_LONG_MAX__ 9223372036854775807LL
+// ARM-NETBSD:#define __LONG_MAX__ 2147483647L
+// ARM-NETBSD-NOT:#define __LP64__
+// ARM-NETBSD:#define __POINTER_WIDTH__ 32
+// ARM-NETBSD:#define __PTRDIFF_TYPE__ long int
+// ARM-NETBSD:#define __PTRDIFF_WIDTH__ 32
+// ARM-NETBSD:#define __REGISTER_PREFIX__
+// ARM-NETBSD:#define __SCHAR_MAX__ 127
+// ARM-NETBSD:#define __SHRT_MAX__ 32767
+// ARM-NETBSD:#define __SIG_ATOMIC_WIDTH__ 32
+// ARM-NETBSD:#define __SIZEOF_DOUBLE__ 8
+// ARM-NETBSD:#define __SIZEOF_FLOAT__ 4
+// ARM-NETBSD:#define __SIZEOF_INT__ 4
+// ARM-NETBSD:#define __SIZEOF_LONG_DOUBLE__ 8
+// ARM-NETBSD:#define __SIZEOF_LONG_LONG__ 8
+// ARM-NETBSD:#define __SIZEOF_LONG__ 4
+// ARM-NETBSD:#define __SIZEOF_POINTER__ 4
+// ARM-NETBSD:#define __SIZEOF_PTRDIFF_T__ 4
+// ARM-NETBSD:#define __SIZEOF_SHORT__ 2
+// ARM-NETBSD:#define __SIZEOF_SIZE_T__ 4
+// ARM-NETBSD:#define __SIZEOF_WCHAR_T__ 4
+// ARM-NETBSD:#define __SIZEOF_WINT_T__ 4
+// ARM-NETBSD:#define __SIZE_MAX__ 4294967295U
+// ARM-NETBSD:#define __SIZE_TYPE__ long unsigned int
+// ARM-NETBSD:#define __SIZE_WIDTH__ 32
+// ARM-NETBSD:#define __THUMB_INTERWORK__ 1
+// ARM-NETBSD:#define __UINTMAX_TYPE__ long long unsigned int
+// ARM-NETBSD:#define __USER_LABEL_PREFIX__
+// ARM-NETBSD:#define __WCHAR_MAX__ 2147483647
+// ARM-NETBSD:#define __WCHAR_TYPE__ int
+// ARM-NETBSD:#define __WCHAR_WIDTH__ 32
+// ARM-NETBSD:#define __WINT_TYPE__ int
+// ARM-NETBSD:#define __WINT_WIDTH__ 32
+// ARM-NETBSD:#define __arm 1
+// ARM-NETBSD:#define __arm__ 1
+
 // RUN: %clang -target arm -arch armv7s -x c -E -dM %s -o - | FileCheck --check-prefix=ARM-DARWIN-NO-EABI %s
 // RUN: %clang -target arm -arch armv6m -x c -E -dM %s -o - | FileCheck --check-prefix=ARM-DARWIN-NO-EABI %s
 // RUN: %clang -target arm -arch armv7m -x c -E -dM %s -o - | FileCheck --check-prefix=ARM-DARWIN-NO-EABI %s
@@ -1776,7 +1880,7 @@
 // MIPS64EL:#define _mips 1
 // MIPS64EL:#define mips 1
 //
-// Check MIPS arch macros
+// Check MIPS arch and isa macros
 //
 // RUN: %clang_cc1 -E -dM -ffreestanding -triple=mips-none-none \
 // RUN:            < /dev/null \
@@ -1784,6 +1888,8 @@
 //
 // MIPS-ARCH-DEF32:#define _MIPS_ARCH "mips32r2"
 // MIPS-ARCH-DEF32:#define _MIPS_ARCH_MIPS32R2 1
+// MIPS-ARCH-DEF32:#define _MIPS_ISA _MIPS_ISA_MIPS32
+// MIPS-ARCH-DEF32:#define __mips_isa_rev 2
 //
 // RUN: %clang_cc1 -E -dM -ffreestanding -triple=mips-none-nones \
 // RUN:            -target-cpu mips32 < /dev/null \
@@ -1791,6 +1897,8 @@
 //
 // MIPS-ARCH-32:#define _MIPS_ARCH "mips32"
 // MIPS-ARCH-32:#define _MIPS_ARCH_MIPS32 1
+// MIPS-ARCH-32:#define _MIPS_ISA _MIPS_ISA_MIPS32
+// MIPS-ARCH-32:#define __mips_isa_rev 1
 //
 // RUN: %clang_cc1 -E -dM -ffreestanding -triple=mips-none-none \
 // RUN:            -target-cpu mips32r2 < /dev/null \
@@ -1798,6 +1906,8 @@
 //
 // MIPS-ARCH-32R2:#define _MIPS_ARCH "mips32r2"
 // MIPS-ARCH-32R2:#define _MIPS_ARCH_MIPS32R2 1
+// MIPS-ARCH-32R2:#define _MIPS_ISA _MIPS_ISA_MIPS32
+// MIPS-ARCH-32R2:#define __mips_isa_rev 2
 //
 // RUN: %clang_cc1 -E -dM -ffreestanding -triple=mips64-none-none \
 // RUN:            < /dev/null \
@@ -1805,6 +1915,8 @@
 //
 // MIPS-ARCH-DEF64:#define _MIPS_ARCH "mips64r2"
 // MIPS-ARCH-DEF64:#define _MIPS_ARCH_MIPS64R2 1
+// MIPS-ARCH-DEF64:#define _MIPS_ISA _MIPS_ISA_MIPS64
+// MIPS-ARCH-DEF64:#define __mips_isa_rev 2
 //
 // RUN: %clang_cc1 -E -dM -ffreestanding -triple=mips64-none-none \
 // RUN:            -target-cpu mips64 < /dev/null \
@@ -1812,6 +1924,8 @@
 //
 // MIPS-ARCH-64:#define _MIPS_ARCH "mips64"
 // MIPS-ARCH-64:#define _MIPS_ARCH_MIPS64 1
+// MIPS-ARCH-64:#define _MIPS_ISA _MIPS_ISA_MIPS64
+// MIPS-ARCH-64:#define __mips_isa_rev 1
 //
 // RUN: %clang_cc1 -E -dM -ffreestanding -triple=mips64-none-none \
 // RUN:            -target-cpu mips64r2 < /dev/null \
@@ -1819,6 +1933,8 @@
 //
 // MIPS-ARCH-64R2:#define _MIPS_ARCH "mips64r2"
 // MIPS-ARCH-64R2:#define _MIPS_ARCH_MIPS64R2 1
+// MIPS-ARCH-64R2:#define _MIPS_ISA _MIPS_ISA_MIPS64
+// MIPS-ARCH-64R2:#define __mips_isa_rev 2
 //
 // Check MIPS float ABI macros
 //

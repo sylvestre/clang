@@ -311,7 +311,7 @@ public:
                    HeaderDirective &MissingHeader) const;
 
   /// \brief Determine whether this module is a submodule.
-  bool isSubModule() const { return Parent != 0; }
+  bool isSubModule() const { return Parent != nullptr; }
   
   /// \brief Determine whether this module is a submodule of the given other
   /// module.
@@ -362,8 +362,8 @@ public:
 
   /// \brief Set the serialized AST file for the top-level module of this module.
   void setASTFile(const FileEntry *File) {
-    assert((File == 0 || getASTFile() == 0 || getASTFile() == File) &&
-           "file path changed");
+    assert((File == nullptr || getASTFile() == nullptr ||
+            getASTFile() == File) && "file path changed");
     getTopLevelModule()->ASTFile = File;
   }
 
@@ -425,6 +425,10 @@ public:
 
   /// \brief Determine whether the specified module would be visible to
   /// a lookup at the end of this module.
+  ///
+  /// FIXME: This may return incorrect results for (submodules of) the
+  /// module currently being built, if it's queried before we see all
+  /// of its imports.
   bool isModuleVisible(const Module *M) const {
     if (VisibleModulesCache.empty())
       buildVisibleModulesCache();

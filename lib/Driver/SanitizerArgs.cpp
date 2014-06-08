@@ -171,8 +171,8 @@ SanitizerArgs::SanitizerArgs(const ToolChain &TC,
 
   if (NeedsAsan) {
     AsanSharedRuntime =
-      (TC.getTriple().getEnvironment() == llvm::Triple::Android) ||
-      Args.hasArg(options::OPT_shared_libasan);
+        Args.hasArg(options::OPT_shared_libasan) ||
+        (TC.getTriple().getEnvironment() == llvm::Triple::Android);
     AsanZeroBaseShadow =
         (TC.getTriple().getEnvironment() == llvm::Triple::Android);
   }
@@ -331,7 +331,7 @@ std::string SanitizerArgs::describeSanitizeArg(const llvm::opt::ArgList &Args,
 
 bool SanitizerArgs::getDefaultBlacklistForKind(const Driver &D, unsigned Kind,
                                                std::string &BLPath) {
-  const char *BlacklistFile = 0;
+  const char *BlacklistFile = nullptr;
   if (Kind & NeedsAsanRt)
     BlacklistFile = "asan_blacklist.txt";
   else if (Kind & NeedsMsanRt)
