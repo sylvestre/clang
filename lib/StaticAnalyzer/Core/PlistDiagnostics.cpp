@@ -21,6 +21,7 @@
 #include "clang/StaticAnalyzer/Core/PathDiagnosticConsumers.h"
 #include "llvm/ADT/DenseMap.h"
 #include "llvm/ADT/SmallVector.h"
+#include "llvm/ADT/Hashing.h"
 #include "llvm/Support/Casting.h"
 using namespace clang;
 using namespace ento;
@@ -53,6 +54,11 @@ namespace {
     bool supportsCrossFileDiagnostics() const override {
       return SupportsCrossFileDiagnostics;
     }
+
+    llvm::hash_code hashIssue(const PathDiagnostic &D,
+                              const SourceManager &sourceManager );
+
+
   };
 } // end anonymous namespace
 
@@ -78,6 +84,28 @@ void ento::createPlistMultiFileDiagnosticConsumer(AnalyzerOptions &AnalyzerOpts,
                                                   const Preprocessor &PP) {
   C.push_back(new PlistDiagnostics(AnalyzerOpts, s,
                                    PP.getLangOpts(), true));
+}
+
+llvm::hash_code
+PlistDiagnostics::hashIssue(const PathDiagnostic &D,
+                            const SourceManager &sourceManager ) {
+
+   StringRef fileName = sourceManager.getFilename(
+       static_cast<SourceLocation>(D.getLocation().asLocation()));
+   int locationLine =
+       D.getLocation().asLocation().getExpansionLineNumber();
+   int locationColumn =
+       D.getLocation().asLocation().getExpansionColumnNumber();
+
+   StringRef description = D.getVerboseDescription();
+   StringRef type = D.getBugType();
+   StringRef category = D.getCategory();
+
+
+  llvm::hash_code resultHash;
+  resultHash = llvm::hash_combine(fileName, locationLine, locationColumn,
+                                  description, type, category);
+  return resultHash;
 }
 
 static void ReportControlFlow(raw_ostream &o,
@@ -422,36 +450,10 @@ void PlistDiagnostics::FlushDiagnosticsImpl(
           EmitString(o, declName) << '\n';
         }
 
-        // Output the bug hash for issue unique-ing. Currently, it's just an
-        // offset from the beginning of the function.
-        if (const Stmt *Body = DeclWithIssue->getBody()) {
-          
-          // If the bug uniqueing location exists, use it for the hash.
-          // For example, this ensures that two leaks reported on the same line
-          // will have different issue_hashes and that the hash will identify
-          // the leak location even after code is added between the allocation
-          // site and the end of scope (leak report location).
-          PathDiagnosticLocation UPDLoc = D->getUniqueingLoc();
-          if (UPDLoc.isValid()) {
-            FullSourceLoc UL(SM->getExpansionLoc(UPDLoc.asLocation()),
-                             *SM);
-            FullSourceLoc UFunL(SM->getExpansionLoc(
-              D->getUniqueingDecl()->getBody()->getLocStart()), *SM);
-            o << "  <key>issue_hash</key><string>"
-              << UL.getExpansionLineNumber() - UFunL.getExpansionLineNumber()
-              << "</string>\n";
 
-          // Otherwise, use the location on which the bug is reported.
-          } else {
-            FullSourceLoc L(SM->getExpansionLoc(D->getLocation().asLocation()),
-                            *SM);
-            FullSourceLoc FunL(SM->getExpansionLoc(Body->getLocStart()), *SM);
-            o << "  <key>issue_hash</key><string>"
-              << L.getExpansionLineNumber() - FunL.getExpansionLineNumber()
-              << "</string>\n";
-          }
-
-        }
+        o << "  <key>issue_hash</key><string>"
+          << hashIssue( *D, *SM )
+          << "</string>\n";
       }
     }
 
