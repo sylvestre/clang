@@ -1,3 +1,5 @@
 19.05 - 23.05 - Nothing
 26.05 - 30.05 - Nothing
-
+02.06 - 06.06 - Environment setup, BugID in clang's plist output, 
+		LLVM testing documentation reading, testing planning,
+		Base locations on the semantic model research,   
