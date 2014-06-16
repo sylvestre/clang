@@ -410,7 +410,7 @@ void testMyMalloc() {
 // CHECK-NEXT:    <key>type</key><string>Memory leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>diagnosticTest</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>15</integer>
@@ -572,7 +572,7 @@ void testMyMalloc() {
 // CHECK-NEXT:    <key>type</key><string>Memory leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>myArrayAllocation</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>22</integer>
@@ -957,7 +957,7 @@ void testMyMalloc() {
 // CHECK-NEXT:    <key>type</key><string>Memory leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>reallocDiagnostics</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>29</integer>
@@ -1356,7 +1356,7 @@ void testMyMalloc() {
 // CHECK-NEXT:    <key>type</key><string>Memory leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_wrapper</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>46</integer>
@@ -1876,7 +1876,7 @@ void testMyMalloc() {
 // CHECK-NEXT:    <key>type</key><string>Use-after-free</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_double_action_call</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>62</integer>
@@ -2435,7 +2435,7 @@ void testMyMalloc() {
 // CHECK-NEXT:    <key>type</key><string>Memory leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>reallocIntra</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>77</integer>
@@ -2703,7 +2703,7 @@ void testMyMalloc() {
 // CHECK-NEXT:    <key>type</key><string>Memory leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>use_ret</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>87</integer>
@@ -2865,7 +2865,7 @@ void testMyMalloc() {
 // CHECK-NEXT:    <key>type</key><string>Memory leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>LeakedSymbol</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>98</integer>
@@ -3070,7 +3070,7 @@ void testMyMalloc() {
 // CHECK-NEXT:    <key>type</key><string>Memory leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>function_with_leak1</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>104</integer>
@@ -3275,7 +3275,7 @@ void testMyMalloc() {
 // CHECK-NEXT:    <key>type</key><string>Memory leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>function_with_leak2</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>112</integer>
@@ -3577,7 +3577,7 @@ void testMyMalloc() {
 // CHECK-NEXT:    <key>type</key><string>Memory leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>function_with_leak3</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>121</integer>
@@ -3879,7 +3879,7 @@ void testMyMalloc() {
 // CHECK-NEXT:    <key>type</key><string>Memory leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>function_with_leak4</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>132</integer>
@@ -4084,7 +4084,7 @@ void testMyMalloc() {
 // CHECK-NEXT:    <key>type</key><string>Memory leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>function_with_leak5</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>143</integer>
@@ -4289,7 +4289,7 @@ void testMyMalloc() {
 // CHECK-NEXT:    <key>type</key><string>Memory leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>function_with_leak6</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>154</integer>
@@ -4523,7 +4523,7 @@ void testMyMalloc() {
 // CHECK-NEXT:    <key>type</key><string>Memory leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>use_function_with_leak7</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>170</integer>
@@ -4757,7 +4757,7 @@ void testMyMalloc() {
 // CHECK-NEXT:    <key>type</key><string>Memory leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>testOnlyRefferToVisibleVariables</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>180</integer>
@@ -5025,7 +5025,7 @@ void testMyMalloc() {
 // CHECK-NEXT:    <key>type</key><string>Memory leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>testMyMalloc</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>192</integer>

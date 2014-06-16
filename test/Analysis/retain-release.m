@@ -2533,7 +2533,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Use-after-release</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>f1</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>340</integer>
@@ -2935,7 +2935,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Use-after-release</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>f2</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>351</integer>
@@ -3209,7 +3209,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>f5</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>387</integer>
@@ -3453,7 +3453,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>f6</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>396</integer>
@@ -3637,7 +3637,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>f7</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>404</integer>
@@ -3821,7 +3821,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak of returned object</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>f7</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>404</integer>
@@ -4065,7 +4065,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>f8</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>415</integer>
@@ -4339,7 +4339,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>f9</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>421</integer>
@@ -4744,7 +4744,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>f10</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>436</integer>
@@ -5212,7 +5212,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>f10</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>437</integer>
@@ -5811,7 +5811,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>f10</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>440</integer>
@@ -6478,7 +6478,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>f10</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>442</integer>
@@ -7276,7 +7276,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>f10</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>444</integer>
@@ -8137,7 +8137,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>f10</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>447</integer>
@@ -8280,7 +8280,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Bad release</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>f11</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>472</integer>
@@ -8374,7 +8374,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>f12</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>481</integer>
@@ -8618,7 +8618,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Object autoreleased too many times</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>f13_autorelease_b</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>492</integer>
@@ -8877,7 +8877,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Object autoreleased too many times</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>f13_autorelease_c</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>498</integer>
@@ -9170,7 +9170,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Object autoreleased too many times</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>f13_autorelease_d</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>505</integer>
@@ -9264,7 +9264,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>f14_leakimmediately</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>514</integer>
@@ -9504,7 +9504,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>null passed to CFRetain/CFRelease/CFMakeCollectable</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>f16</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>532</integer>
@@ -9841,7 +9841,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>null passed to CFRetain/CFRelease/CFMakeCollectable</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>f16</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>535</integer>
@@ -10178,7 +10178,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>null passed to CFRetain/CFRelease/CFMakeCollectable</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>f16</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>538</integer>
@@ -10328,7 +10328,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Method should return an owned object</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>Objective-C method</string>
 // CHECK-NEXT:   <key>issue_context</key><string>newString</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>585</integer>
@@ -10534,7 +10534,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>rdar_6659160</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>606</integer>
@@ -10973,7 +10973,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>rdar_6659160</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>620</integer>
@@ -11548,7 +11548,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Bad release</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>rdar_6659160</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>626</integer>
@@ -11732,7 +11732,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Use-after-release</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>pr3820_ReleaseAfterDealloc</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>650</integer>
@@ -11950,7 +11950,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Use-after-release</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>pr3820_DeallocAfterRelease</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>659</integer>
@@ -12187,7 +12187,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>Objective-C method</string>
 // CHECK-NEXT:   <key>issue_context</key><string>applicationDidFinishLaunching:</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>716</integer>
@@ -12458,7 +12458,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>Objective-C method</string>
 // CHECK-NEXT:   <key>issue_context</key><string>radar10102244</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>726</integer>
@@ -12601,7 +12601,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Bad release</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>rdar_6257780_Case1</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>736</integer>
@@ -12744,7 +12744,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>Objective-C method</string>
 // CHECK-NEXT:   <key>issue_context</key><string>_initReturningNewClassBad</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>813</integer>
@@ -12928,7 +12928,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Method should return an owned object</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>Objective-C method</string>
 // CHECK-NEXT:   <key>issue_context</key><string>initReturningNewClassBad2</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>818</integer>
@@ -13044,7 +13044,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak of returned object</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>Objective-C method</string>
 // CHECK-NEXT:   <key>issue_context</key><string>NoCopyString</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>856</integer>
@@ -13160,7 +13160,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak of returned object</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>Objective-C method</string>
 // CHECK-NEXT:   <key>issue_context</key><string>noCopyString</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>857</integer>
@@ -13375,7 +13375,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_RDar6859457</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>862</integer>
@@ -13624,7 +13624,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_RDar6859457</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>863</integer>
@@ -13740,7 +13740,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak of returned object</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>Objective-C method</string>
 // CHECK-NEXT:   <key>issue_context</key><string>:</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>896</integer>
@@ -13849,7 +13849,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>rdar6902710</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>927</integer>
@@ -14026,7 +14026,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>rdar6902710</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>928</integer>
@@ -14203,7 +14203,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>rdar6902710</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>929</integer>
@@ -14331,7 +14331,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>rdar6902710</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>930</integer>
@@ -14425,7 +14425,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>rdar6945561</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>939</integer>
@@ -14519,7 +14519,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>IOBSDNameMatching_wrapper</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>948</integer>
@@ -14613,7 +14613,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>IOServiceMatching_wrapper</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>952</integer>
@@ -14707,7 +14707,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>IOServiceNameMatching_wrapper</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>956</integer>
@@ -14891,7 +14891,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Use-after-release</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>IOServiceAddNotification_wrapper</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>965</integer>
@@ -14985,7 +14985,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>IORegistryEntryIDMatching_wrapper</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>971</integer>
@@ -15079,7 +15079,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>IOOpenFirmwarePathMatching_wrapper</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>976</integer>
@@ -15263,7 +15263,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Use-after-release</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>IOServiceGetMatchingService_wrapper</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>981</integer>
@@ -15447,7 +15447,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Use-after-release</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>IOServiceGetMatchingServices_wrapper</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>987</integer>
@@ -15631,7 +15631,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Use-after-release</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>IOServiceAddMatchingNotification_wrapper</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>995</integer>
@@ -15924,7 +15924,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>rdar_7152619</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1040</integer>
@@ -16101,7 +16101,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>rdar_7184450</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1060</integer>
@@ -16278,7 +16278,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>rdar_7184450_pos</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1082</integer>
@@ -16474,7 +16474,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>rdar_7184450_pos</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1087</integer>
@@ -16568,7 +16568,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>rdar_7299394_positive</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1122</integer>
@@ -16696,7 +16696,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>rdar_7358899</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1258</integer>
@@ -16790,7 +16790,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>rdar7265711_a</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1275</integer>
@@ -16918,7 +16918,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>rdar7306898</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1296</integer>
@@ -16964,7 +16964,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>message incorrectly sent to class instead of class instance</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>rdar7252064</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1305</integer>
@@ -17044,7 +17044,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>message incorrectly sent to class instead of class instance</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>rdar7252064</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1306</integer>
@@ -17124,7 +17124,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>message incorrectly sent to class instead of class instance</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>rdar7252064</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1307</integer>
@@ -17204,7 +17204,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>message incorrectly sent to class instead of class instance</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>rdar7252064</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1308</integer>
@@ -17298,7 +17298,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_attr_1</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1336</integer>
@@ -17392,7 +17392,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_attr_1b</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1340</integer>
@@ -17569,7 +17569,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_attr1c</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1345</integer>
@@ -17806,7 +17806,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_attr1c</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1347</integer>
@@ -17900,7 +17900,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>testattr2_a</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1351</integer>
@@ -17994,7 +17994,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>testattr2_b</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1355</integer>
@@ -18122,7 +18122,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>testattr2_b_11358224_self_assign_looses_the_leak</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1360</integer>
@@ -18238,7 +18238,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak of returned object</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>Objective-C method</string>
 // CHECK-NEXT:   <key>issue_context</key><string>newString</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1390</integer>
@@ -18736,7 +18736,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Method should return an owned object</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>Objective-C method</string>
 // CHECK-NEXT:   <key>issue_context</key><string>newCFRetainedAsCFNoAttr</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1423</integer>
@@ -19026,7 +19026,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak of returned object</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>Objective-C method</string>
 // CHECK-NEXT:   <key>issue_context</key><string>alsoReturnsRetained</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1427</integer>
@@ -19316,7 +19316,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak of returned object</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>Objective-C method</string>
 // CHECK-NEXT:   <key>issue_context</key><string>alsoReturnsRetainedAsCF</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1431</integer>
@@ -19444,7 +19444,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_panic_negative</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1453</integer>
@@ -19669,7 +19669,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_panic_neg_2</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1466</integer>
@@ -19778,7 +19778,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_blocks_1_pos</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1487</integer>
@@ -20053,7 +20053,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_blocks_1_indirect_retain_via_call</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1509</integer>
@@ -20375,7 +20375,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>rdar_8724287</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1570</integer>
@@ -20491,7 +20491,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak of returned object</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>camelcase_createno</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1615</integer>
@@ -20607,7 +20607,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak of returned object</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>camelcase_copying</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1623</integer>
@@ -20723,7 +20723,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak of returned object</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>camel_creat</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1644</integer>
@@ -20839,7 +20839,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak of returned object</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>camel_copymachine</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1656</integer>
@@ -20967,7 +20967,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>rdar6582778</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1678</integer>
@@ -21219,7 +21219,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Use-after-release</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>rdar10232019_positive</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1707</integer>
@@ -21362,7 +21362,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_objc_arrays</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1838</integer>
@@ -21573,7 +21573,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_objc_arrays</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1847</integer>
@@ -21961,7 +21961,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_objc_arrays</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1855</integer>
@@ -22308,7 +22308,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_objc_arrays</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1864</integer>
@@ -22832,7 +22832,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_objc_arrays</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1873</integer>
@@ -23069,7 +23069,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_objc_integer_literals</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1880</integer>
@@ -23287,7 +23287,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_objc_boxed_expressions</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1887</integer>
@@ -23558,7 +23558,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_objc_boxed_expressions</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1888</integer>
@@ -23907,7 +23907,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Use-after-release</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>rdar11400885</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1901</integer>
@@ -24050,7 +24050,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Bad release</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>testConsumeAndStopTracking</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1929</integer>
@@ -24193,7 +24193,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Bad release</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>testCFConsumeAndStopTracking</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1942</integer>
@@ -24287,7 +24287,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_custom_cf</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1955</integer>
@@ -24381,7 +24381,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>testCustomReturnsRetained</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1990</integer>
@@ -24456,7 +24456,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Bad release</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>testCustomReturnsNotRetained</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>1993</integer>
@@ -24802,7 +24802,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>Objective-C method</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test12706177</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>2012</integer>
@@ -25061,7 +25061,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Object autoreleased too many times</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>getIncorrectlyAutoreleasedCFType</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>2028</integer>
@@ -25279,7 +25279,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Method should return an owned object</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>createIncorrectlyAutoreleasedCFType</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>2033</integer>
@@ -25463,7 +25463,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Use-after-release</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>useAfterRelease</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>2052</integer>
@@ -25707,7 +25707,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>testAutoreleaseReturnsInput</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>2060</integer>
@@ -25951,7 +25951,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>autoreleaseReturningTypedObject</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>2080</integer>
@@ -26154,7 +26154,7 @@ id returnNSNull() {
 // CHECK-NEXT:    <key>type</key><string>Object autoreleased too many times</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>autoreleaseObjC</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>2096</integer>

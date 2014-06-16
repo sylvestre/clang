@@ -250,7 +250,7 @@ void callInMacroArg() {
 // CHECK-NEXT:    <key>type</key><string>Division by zero</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>cause_div_by_zero_in_header2</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>23</integer>
@@ -513,7 +513,7 @@ void callInMacroArg() {
 // CHECK-NEXT:    <key>type</key><string>Division by zero</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>cause_div_by_zero_in_header3</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>31</integer>
@@ -699,7 +699,7 @@ void callInMacroArg() {
 // CHECK-NEXT:    <key>type</key><string>Division by zero</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>cause_div_by_zero_in_header4</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>39</integer>
@@ -939,7 +939,7 @@ void callInMacroArg() {
 // CHECK-NEXT:    <key>type</key><string>Bad deallocator</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>mainPlusHeader</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>7</integer>
@@ -1271,7 +1271,7 @@ void callInMacroArg() {
 // CHECK-NEXT:    <key>type</key><string>Division by zero</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>auxInMain</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>12</integer>
@@ -1491,7 +1491,7 @@ void callInMacroArg() {
 // CHECK-NEXT:    <key>type</key><string>Division by zero</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>causeDivByZeroInMain</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>24</integer>
@@ -1745,7 +1745,7 @@ void callInMacroArg() {
 // CHECK-NEXT:    <key>type</key><string>Division by zero</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>causeDivByZeroInMain2</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>36</integer>

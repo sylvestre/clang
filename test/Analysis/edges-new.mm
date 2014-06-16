@@ -424,7 +424,7 @@ void testCast(int coin) {
 }
 
 // The original source for the above Radar contains another problem:
-// if the end-of-path node is an implicit statement, it may not have a valid
+// if the end-of-path node is an implicit statement, it may not have a valid
 // source location. <rdar://problem/12446776>
 - (void)test2 {
   if (bar_cond_assign()) {
@@ -727,7 +727,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_null_init</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>53</integer>
@@ -904,7 +904,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_null_assign</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>59</integer>
@@ -1144,7 +1144,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_null_assign_transitive</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>66</integer>
@@ -1321,7 +1321,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_null_cond</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>71</integer>
@@ -1561,7 +1561,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_null_cond_transitive</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>78</integer>
@@ -1738,7 +1738,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_null_field</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>85</integer>
@@ -2075,7 +2075,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_assumptions</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>97</integer>
@@ -2344,7 +2344,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_cond_assign</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>105</integer>
@@ -2603,7 +2603,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>rdar8331641</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>123</integer>
@@ -2780,7 +2780,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_objc_fast_enumeration</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>132</integer>
@@ -2826,7 +2826,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dead increment</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_objc_fast_enumeration_2</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>140</integer>
@@ -3032,7 +3032,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Assigned value is garbage or undefined</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_objc_fast_enumeration_2</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>140</integer>
@@ -3466,7 +3466,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>rdar12280665</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>148</integer>
@@ -3769,7 +3769,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>radar12322528_for</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>162</integer>
@@ -4038,7 +4038,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>radar12322528_while</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>172</integer>
@@ -4540,7 +4540,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>radar12322528_foo_2</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>186</integer>
@@ -5037,7 +5037,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_loop_diagnostics</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>192</integer>
@@ -5602,7 +5602,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_loop_diagnostics_2</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>206</integer>
@@ -6167,7 +6167,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_loop_diagnostics_3</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>219</integer>
@@ -6611,7 +6611,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_do_while</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>234</integer>
@@ -6856,7 +6856,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_logical_and</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>241</integer>
@@ -7101,7 +7101,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_logical_or</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>248</integer>
@@ -7380,7 +7380,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_logical_or_call</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>256</integer>
@@ -7659,7 +7659,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_nested_logicals</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>264</integer>
@@ -8074,7 +8074,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_nested_logicals</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>268</integer>
@@ -8557,7 +8557,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_deeply_nested_logicals</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>278</integer>
@@ -8967,7 +8967,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_ternary</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>287</integer>
@@ -9241,7 +9241,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>testUseless</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>298</integer>
@@ -9447,7 +9447,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>testFoo</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>312</integer>
@@ -9619,7 +9619,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test1_IPA_X</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>321</integer>
@@ -10014,7 +10014,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_IPA_Y</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>341</integer>
@@ -10234,7 +10234,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Division by zero</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>causeDivByZeroInMain</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>347</integer>
@@ -10377,7 +10377,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>Objective-C method</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>384</integer>
@@ -10486,7 +10486,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Argument with &apos;nonnull&apos; attribute passed null</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>RDar13295437</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>394</integer>
@@ -10697,7 +10697,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>testCast</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>404</integer>
@@ -10874,7 +10874,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>Objective-C method</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>422</integer>
@@ -10932,7 +10932,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dead initialization</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>Objective-C method</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test2</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>431</integer>
@@ -11060,7 +11060,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>Objective-C method</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test2</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>433</integer>
@@ -11237,7 +11237,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>variousLoops</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>449</integer>
@@ -11681,7 +11681,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>variousLoops</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>458</integer>
@@ -12091,7 +12091,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>variousLoops</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>464</integer>
@@ -12564,7 +12564,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>variousLoops</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>472</integer>
@@ -13818,7 +13818,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>variousLoops</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>500</integer>
@@ -15135,7 +15135,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>variousLoops</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>505</integer>
@@ -16549,7 +16549,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>variousLoops</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>512</integer>
@@ -18060,7 +18060,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>variousLoops</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>521</integer>
@@ -18343,7 +18343,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Memory leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>reallocDiagnostics</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>533</integer>
@@ -18580,7 +18580,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>description</key><string>Memory allocated by &apos;new[]&apos; should be deallocated by &apos;delete[]&apos;, not &apos;delete&apos;</string>
 // CHECK-NEXT:    <key>category</key><string>Memory Error</string>
 // CHECK-NEXT:    <key>type</key><string>Bad deallocator</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>544</integer>
@@ -19294,7 +19294,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>longLines</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>568</integer>
@@ -19437,7 +19437,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>testMacroInFunctionDecl</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>573</integer>
@@ -19617,7 +19617,7 @@ namespace rdar14960554 {
 // CHECK-NEXT:    <key>description</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:    <key>category</key><string>Logic error</string>
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>588</integer>

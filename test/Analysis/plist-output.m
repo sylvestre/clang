@@ -79,7 +79,7 @@ int test_cond_assign() {
 }
 
 // The original source for the above Radar contains another problem:
-// if the end-of-path node is an implicit statement, it may not have a valid
+// if the end-of-path node is an implicit statement, it may not have a valid
 // source location. <rdar://problem/12446776>
 - (void)test2 {
   if (bar_cond_assign()) {
@@ -297,7 +297,7 @@ int testFoo(Foo *x) {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_null_init</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>6</integer>
@@ -440,7 +440,7 @@ int testFoo(Foo *x) {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_null_assign</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>12</integer>
@@ -646,7 +646,7 @@ int testFoo(Foo *x) {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_null_assign_transitive</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>19</integer>
@@ -823,7 +823,7 @@ int testFoo(Foo *x) {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_null_cond</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>24</integer>
@@ -1029,7 +1029,7 @@ int testFoo(Foo *x) {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_null_cond_transitive</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>31</integer>
@@ -1206,7 +1206,7 @@ int testFoo(Foo *x) {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_null_field</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>38</integer>
@@ -1509,7 +1509,7 @@ int testFoo(Foo *x) {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_assumptions</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>50</integer>
@@ -1778,7 +1778,7 @@ int testFoo(Foo *x) {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_cond_assign</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>58</integer>
@@ -1921,7 +1921,7 @@ int testFoo(Foo *x) {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>Objective-C method</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>77</integer>
@@ -1979,7 +1979,7 @@ int testFoo(Foo *x) {
 // CHECK-NEXT:    <key>type</key><string>Dead initialization</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>Objective-C method</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test2</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>86</integer>
@@ -2141,7 +2141,7 @@ int testFoo(Foo *x) {
 // CHECK-NEXT:    <key>type</key><string>Leak</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>Objective-C method</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test2</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>88</integer>
@@ -2449,7 +2449,7 @@ int testFoo(Foo *x) {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>rdar12280665</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>98</integer>
@@ -2752,7 +2752,7 @@ int testFoo(Foo *x) {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>radar12322528_for</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>111</integer>
@@ -3055,7 +3055,7 @@ int testFoo(Foo *x) {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>radar12322528_while</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>121</integer>
@@ -3431,7 +3431,7 @@ int testFoo(Foo *x) {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>radar12322528_foo_2</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>130</integer>
@@ -3870,7 +3870,7 @@ int testFoo(Foo *x) {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_loop_diagnostics</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>136</integer>
@@ -4343,7 +4343,7 @@ int testFoo(Foo *x) {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_loop_diagnostics_2</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>145</integer>
@@ -4816,7 +4816,7 @@ int testFoo(Foo *x) {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_loop_diagnostics_3</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>155</integer>
@@ -4862,7 +4862,7 @@ int testFoo(Foo *x) {
 // CHECK-NEXT:    <key>type</key><string>Dead increment</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_loop_fast_enumeration</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>163</integer>
@@ -5068,7 +5068,7 @@ int testFoo(Foo *x) {
 // CHECK-NEXT:    <key>type</key><string>Assigned value is garbage or undefined</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test_loop_fast_enumeration</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>163</integer>
@@ -5177,7 +5177,7 @@ int testFoo(Foo *x) {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>Objective-C method</string>
 // CHECK-NEXT:   <key>issue_context</key><string>test</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>172</integer>
@@ -5286,7 +5286,7 @@ int testFoo(Foo *x) {
 // CHECK-NEXT:    <key>type</key><string>Argument with &apos;nonnull&apos; attribute passed null</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>RDar13295437</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>184</integer>
@@ -5526,7 +5526,7 @@ int testFoo(Foo *x) {
 // CHECK-NEXT:    <key>type</key><string>Dereference of null pointer</string>
 // CHECK-NEXT:   <key>issue_context_kind</key><string>function</string>
 // CHECK-NEXT:   <key>issue_context</key><string>testFoo</string>
-// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9]+}}</string>
+// CHECK-NEXT:   <key>issue_hash</key><string>{{[0-9a-f]+}}</string>
 // CHECK-NEXT:   <key>location</key>
 // CHECK-NEXT:   <dict>
 // CHECK-NEXT:    <key>line</key><integer>194</integer>

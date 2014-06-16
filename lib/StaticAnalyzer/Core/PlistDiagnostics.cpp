@@ -24,6 +24,7 @@
 #include "llvm/ADT/Hashing.h"
 #include "llvm/Support/Casting.h"
 #include "clang/Index/USRGeneration.h"
+#include "llvm/Support/MD5.h"
 
 using namespace clang;
 using namespace ento;
@@ -57,7 +58,7 @@ namespace {
       return SupportsCrossFileDiagnostics;
     }
 
-    llvm::hash_code hashIssue(const PathDiagnostic &D,
+    SmallString<32> hashIssue(const PathDiagnostic &D,
                               const SourceManager &sourceManager );
 
 
@@ -88,26 +89,34 @@ void ento::createPlistMultiFileDiagnosticConsumer(AnalyzerOptions &AnalyzerOpts,
                                    PP.getLangOpts(), true));
 }
 
-llvm::hash_code
+SmallString<32>
 PlistDiagnostics::hashIssue(const PathDiagnostic &D,
                             const SourceManager &sourceManager ) {
 
-   StringRef fileName = sourceManager.getFilename(
-       static_cast<SourceLocation>(D.getLocation().asLocation()));
+  StringRef fileName = sourceManager.getFilename(
+    static_cast<SourceLocation>(D.getLocation().asLocation()));
 
-   SmallString<1024> USR;
-   index::generateUSRForDecl(D.getUniqueingDecl(), USR);
+  SmallString<1024> USR;
+  index::generateUSRForDecl(D.getDeclWithIssue(), USR);
 
-   StringRef description = D.getVerboseDescription();
-   StringRef type = D.getBugType();
-   StringRef category = D.getCategory();
+  StringRef description = D.getVerboseDescription();
+  StringRef type = D.getBugType();
+  StringRef category = D.getCategory();
 
 
-  llvm::hash_code resultHash;
-  resultHash = llvm::hash_combine(fileName.str(), USR,
-                                  description.str(), type.str(), category.str());
+  llvm::MD5 issueId;
+  issueId.update( fileName );
+  issueId.update( USR );
+  issueId.update( description );
+  issueId.update( type );
+  issueId.update( category );
 
-  return resultHash;
+  llvm::MD5::MD5Result MD5Res;
+  issueId.final(MD5Res);
+  SmallString<32> Res;
+  llvm::MD5::stringifyResult(MD5Res, Res);
+
+  return Res;
 }
 
 static void ReportControlFlow(raw_ostream &o,
