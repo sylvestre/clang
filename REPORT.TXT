@@ -2,4 +2,7 @@
 26.05 - 30.05 - Nothing
 02.06 - 06.06 - Environment setup, BugID in clang's plist output, 
 		LLVM testing documentation reading, testing planning,
-		Base locations on the semantic model research,   
+                Base locations on the semantic model research,
+09.06 - 13.06 - Clang internals documentation reading,
+                Base locations on the semantic model,
+                Platform-independent hashing
