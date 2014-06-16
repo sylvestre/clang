@@ -1,29 +1,40 @@
-              1 Add BugID to clang's output in plist format.
-                    Fix tests
-                    Add new tests
-              2 Improve generating of unique ids in clang.
-                2.1 Base locations on the semantic model.
-                2.2 Introduce platform-independend hashing
-                2.3 Impact ID's dependency on paths
+--------------------------------------------------------
 
-              3 Implement Tracking Platform
-                Tracking platform is a tool which is intended to work with bugs database. 
-                It will use SqlAlchemy. 
-                
-                3.1 Design database schema.
-                3.2 Create interface for accessing this database.
-                3.3 Fill database from clang's plist-output.
-                3.4 Tagging of false positive
-                3.5 Evolution of number of defects (per category or not).
+Done:
 
-              4 Improve scan-view (should use Tracking Platform)
-                4.1 Choose backend (flask is the best candidate now.)
-                4.2 Choose frontend (twitter bootstrap is the best candidate now.)
-                4.3 Graphic of the evolution over time
-                4.4 Tagging of false positive
-                4.5 Evolution of number of defects (per category or not).
-                4.6 Comparison between build's results
+--------------------------------------------------------
+
+1 Add BugID to clang's output in plist format.
+      Fix tests
+2 Improve generating of unique ids in clang.
+  2.1 Base locations on the semantic model.
+
+--------------------------------------------------------
+
+Not finished:
+
+--------------------------------------------------------
+
+  2.2 Introduce platform-independend hashing
+
+3 Implement Tracking Platform
+  Tracking platform is a tool which is intended to work with bugs database.
+  It will use SqlAlchemy.
+
+  3.1 Design database schema.
+  3.2 Create interface for accessing this database.
+  3.3 Fill database from clang's plist-output.
+  3.4 Tagging of false positive
+  3.5 Evolution of number of defects (per category or not).
+
+4 Improve scan-view (should use Tracking Platform)
+  4.1 Choose backend (flask is the best candidate now.)
+  4.2 Choose frontend (twitter bootstrap is the best candidate now.)
+  4.3 Graphic of the evolution over time
+  4.4 Tagging of false positive
+  4.5 Evolution of number of defects (per category or not).
+  4.6 Comparison between build's results
 
 
-              5 Advanced heuristics for matching violations.
-                Research is needed.
+5 Advanced heuristics for matching violations.
+  Research is needed.

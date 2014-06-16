@@ -23,6 +23,8 @@
 #include "llvm/ADT/SmallVector.h"
 #include "llvm/ADT/Hashing.h"
 #include "llvm/Support/Casting.h"
+#include "clang/Index/USRGeneration.h"
+
 using namespace clang;
 using namespace ento;
 using namespace markup;
@@ -92,10 +94,9 @@ PlistDiagnostics::hashIssue(const PathDiagnostic &D,
 
    StringRef fileName = sourceManager.getFilename(
        static_cast<SourceLocation>(D.getLocation().asLocation()));
-   int locationLine =
-       D.getLocation().asLocation().getExpansionLineNumber();
-   int locationColumn =
-       D.getLocation().asLocation().getExpansionColumnNumber();
+
+   SmallString<1024> USR;
+   index::generateUSRForDecl(D.getUniqueingDecl(), USR);
 
    StringRef description = D.getVerboseDescription();
    StringRef type = D.getBugType();
@@ -103,8 +104,9 @@ PlistDiagnostics::hashIssue(const PathDiagnostic &D,
 
 
   llvm::hash_code resultHash;
-  resultHash = llvm::hash_combine(fileName, locationLine, locationColumn,
-                                  description, type, category);
+  resultHash = llvm::hash_combine(fileName.str(), USR,
+                                  description.str(), type.str(), category.str());
+
   return resultHash;
 }
 
