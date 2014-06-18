@@ -9,18 +9,17 @@ Done:
 2 Improve generating of unique ids in clang.
   2.1 Base locations on the semantic model.
   2.2 Introduce platform-independend hashing
+3 Implement Tracking Platform
+  Tracking platform is a tool which is intended to work with bugs database.
+  It will use SqlAlchemy.
 
+  3.1 Design database schema.
 --------------------------------------------------------
 
 Not finished:
 
 --------------------------------------------------------
 
-3 Implement Tracking Platform
-  Tracking platform is a tool which is intended to work with bugs database.
-  It will use SqlAlchemy.
-
-  3.1 Design database schema.
   3.2 Create interface for accessing this database.
   3.3 Fill database from clang's plist-output.
   3.4 Tagging of false positive
