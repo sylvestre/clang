@@ -60,7 +60,7 @@ class Path(_Base):
     piece_id            = Column(Integer)
 
     line                = Column(Integer)
-    column              = Column(Integer)    
+    col                 = Column(Integer)    
     file_id             = Column(Integer, ForeignKey('files.id'))
     file                = relationship("files")
 

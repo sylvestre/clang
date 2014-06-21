@@ -1,0 +1,92 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import Tables
+
+import os
+import glob
+import logging
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
+###############################################################################
+# Command executors:
+
+class CommandExecutor:
+	def getDatabaseName( self ):
+		return ".tracking-platform.db" 
+	def execute( self ):
+		pass
+
+class AddCommandExecutor( CommandExecutor ):
+	def __init__( self, _args ):
+		self.__resultsDir = os.path.abspath( _args.result_dir )
+		self.__dbPath = os.getcwd() + '/' + self.getDatabaseName()
+	def execute( self ):
+		if not os.access( self.__dbPath, os.W_OK ):
+			print( "ERROR: No initialized database in the current directory. Do 'tracking-platform init' before.")
+			return
+
+		files = glob.glob( self.__resultsDir + '/*.plist' )
+		if not files:
+			print( "ERROR: No plist files are presented in " + self.__resultsDir )
+		for file in files:
+			self.__loadDiagnostic( file )
+
+	def __loadDiagnostic( self, _file ):
+		print "Added diagnostic for " + _file
+
+class InitializeCommandExecutor( CommandExecutor ):
+	def __init__( self, _args ):
+		self.__dbContainingDir = os.path.abspath( _args.dest_dir )
+		self.__dbPath = self.__dbContainingDir + '/' + self.getDatabaseName()
+	def execute( self ):
+		if not os.path.exists( self.__dbContainingDir ):
+			try:
+				os.makedirs( self.__dbContainingDir )
+			except os.error:
+				print( "ERROR: Cannot create directory for the database: " + self.__dbContainingDir )
+				return
+
+		if os.path.exists( self.__dbPath ):
+			print( "ERROR: Database is already intialized in " + self.__dbPath )
+			return
+
+		engine = create_engine('sqlite:///' + self.__dbPath, echo=False)
+		Tables.initializeTables( engine )
+
+		print( "Database has been successfully initialized in " + self.__dbPath )
+
+###############################################################################
+# Entry point:
+
+def main():
+
+	import argparse
+	top_parser = argparse.ArgumentParser(description="Tracking platform")
+	top_parser.add_argument('--version', action='version', version='Tracking Platform 0.1')
+	subparsers = top_parser.add_subparsers(help='sub-command help')
+	
+	# initialize command
+	parser_initialize = subparsers.add_parser(
+		'init', 
+		description="Initializes database", 
+		help='initializes database in a current directory')
+	parser_initialize.set_defaults(executor=InitializeCommandExecutor)
+	parser_initialize.add_argument('dest_dir', help="Directory where database will be placed.", nargs = '?', default = '.')
+
+	# add command
+	parser_add = subparsers.add_parser(
+		'add', 
+		description="Adds results to database", 
+		help="adds scan-build's results to the database")
+	parser_add.set_defaults(executor=AddCommandExecutor)
+	parser_add.add_argument('result_dir', help="Directory which was produced by scan-build.")
+
+	# parse command line arguments
+	given_args = top_parser.parse_args()
+	commandExecutor = given_args.executor(given_args)
+	commandExecutor.execute()
+
+if __name__ == '__main__':
+	main()
