@@ -6,3 +6,6 @@
 09.06 - 13.06 - Clang internals documentation reading,
                 Base locations on the semantic model,
                 Platform-independent hashing
+16.06 - 20.06 - Getting on with SQLAlchemy.
+                Implemented base of Tracking-Platform
+                Wrote prototype of Database for ORM
