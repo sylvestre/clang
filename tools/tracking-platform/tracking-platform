@@ -6,57 +6,169 @@ import Tables
 import os
 import glob
 import logging
+import datetime
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 ###############################################################################
+# Plist reader:
+
+import plistlib
+
+class DiagnosticLoader:
+	def __init__(self, _session):
+		self.__session = _session
+		self.__launch = Tables.Launch( time = datetime.datetime.now() )
+
+	def getOrCreate(self, _table, **_kwargs):
+	    instance = self.__session.query(_table).filter_by(**_kwargs).first()
+	    if instance:
+	        return instance, False
+	    else:
+	        instance = _table(**_kwargs)
+	        self.__session.add(instance)
+	        return instance, True
+
+	def load( self, _plistFileName ):
+		with open(_plistFileName, 'rb') as fp:
+			plist = plistlib.readPlist(fp)
+			self.createDiagnosticsFromDict( plist )
+
+	def getFile( self, _fileName ):
+		return self.getOrCreate( Tables.File, name = _fileName )[0]
+
+	def createPath( self, _fileNames, _plist):
+		pieceId = 0
+		for piecePl in _plist:
+			if piecePl['kind'] != 'event':
+				continue
+			pathPiece, created = self.getOrCreate(Tables.PathPiece, 
+			    message             = piecePl['message'],
+			    extended_message    = piecePl['extended_message'],
+			    depth               = piecePl['depth'],
+			    piece_id            = pieceId,
+			    line                = piecePl['location']['line'],
+			    col                 = piecePl['location']['col'],
+			    file                = self.getFile( _fileNames[ piecePl['location']['file'] ] )	
+			)
+			print pieceId
+			pieceId = pieceId + 1
+			pathPiece.launches.append( self.__launch )
+			yield pathPiece, created
+
+
+
+	def createDiagnosticsFromDict( self, _plist ):
+		fileNames = _plist[ 'files' ]
+		diagnosticsPl = _plist[ 'diagnostics' ]
+		# TODO revise all possible attributes in plist file.
+
+		for diagPl in diagnosticsPl:
+			uniqueId = diagPl['issue_hash']
+			diag, created = self.getOrCreate( Tables.Diagnostic, issue_hash = uniqueId )
+			if created:
+				diag.description        		= diagPl['description']
+				diag.category           		= diagPl['category']
+				diag.type               		= diagPl['type']
+				diag.issue_context_kind 		= diagPl['issue_context_kind']
+				diag.issue_context   			= diagPl['issue_context']  
+				diag.issue_hash					= diagPl['issue_hash']                     
+				diag.line               		= diagPl['location']['line']
+				diag.col                		= diagPl['location']['col']
+				diag.file              			= self.getFile( fileNames[ diagPl['location']['file'] ] )
+			
+			diag.launches.append( self.__launch  )
+			for piece, peaceCreated in self.createPath( fileNames, diagPl['path'] ):
+				if peaceCreated:
+					diag.all_path_pieces.append( piece )
+			# TODO: Maybe autorefreshing would be better?
+			self.__session.commit()
+
+
+
+###############################################################################
 # Command executors:
 
-class CommandExecutor:
+class CommandExecutor(object):
+	def __init__( self, _containingDir ):
+		self.__dbContainingDir = os.path.abspath( _containingDir )
+		self.__dbPath = self.__dbContainingDir + '/' + self.getDatabaseName()
 	def getDatabaseName( self ):
-		return ".tracking-platform.db" 
+		#return ".tracking-platform.db"
+		return "tp_db.sqlite" 
+	def getDBContainingDir( self ):
+		return self.__dbContainingDir
+	def getDBPath( self ):
+		return self.__dbPath
 	def execute( self ):
 		pass
 
 class AddCommandExecutor( CommandExecutor ):
-	def __init__( self, _args ):
-		self.__resultsDir = os.path.abspath( _args.result_dir )
-		self.__dbPath = os.getcwd() + '/' + self.getDatabaseName()
+	def __init__( self, **_args ):
+		super( AddCommandExecutor, self ).__init__( os.getcwd() )
+		self.__resultsDir = os.path.abspath( _args['result_dir']	 )
 	def execute( self ):
-		if not os.access( self.__dbPath, os.W_OK ):
+		if not os.access( self.getDBPath(), os.W_OK ):
 			print( "ERROR: No initialized database in the current directory. Do 'tracking-platform init' before.")
 			return
 
 		files = glob.glob( self.__resultsDir + '/*.plist' )
 		if not files:
 			print( "ERROR: No plist files are presented in " + self.__resultsDir )
-		for file in files:
-			self.__loadDiagnostic( file )
+	
+		# TODO: Add nice error message if no tables are initialized
+		engine = create_engine('sqlite:///' + self.getDBPath(), echo=False)
+		Session = sessionmaker(bind=engine)
+		session = Session()
 
-	def __loadDiagnostic( self, _file ):
-		print "Added diagnostic for " + _file
+		diagLoader = DiagnosticLoader( session )
+		for file in files:
+			diagLoader.load( file )
+		
 
 class InitializeCommandExecutor( CommandExecutor ):
-	def __init__( self, _args ):
-		self.__dbContainingDir = os.path.abspath( _args.dest_dir )
-		self.__dbPath = self.__dbContainingDir + '/' + self.getDatabaseName()
+	def __init__( self, **_args ):
+		super( InitializeCommandExecutor, self ).__init__( _args['dest_dir'] )
+		
+		self.__printSuccessMessage = True
+		if 'print_success_message' in _args:
+			self.__printSuccessMessage = _args['print_success_message']
+
 	def execute( self ):
-		if not os.path.exists( self.__dbContainingDir ):
+		if not os.path.exists( self.getDBContainingDir() ):
 			try:
-				os.makedirs( self.__dbContainingDir )
+				os.makedirs( self.getDBContainingDir() )
 			except os.error:
-				print( "ERROR: Cannot create directory for the database: " + self.__dbContainingDir )
+				print( "ERROR: Cannot create directory for the database: " + self.getDBContainingDir() )
 				return
 
-		if os.path.exists( self.__dbPath ):
-			print( "ERROR: Database is already intialized in " + self.__dbPath )
+		if os.path.exists( self.getDBPath() ):
+			print( "ERROR: Database is already intialized at " + self.getDBPath() )
 			return
 
-		engine = create_engine('sqlite:///' + self.__dbPath, echo=False)
+		engine = create_engine('sqlite:///' + self.getDBPath(), echo=False)
 		Tables.initializeTables( engine )
 
-		print( "Database has been successfully initialized in " + self.__dbPath )
+		if self.__printSuccessMessage:
+			print( "Database has been successfully initialized at " + self.getDBPath() )
 
+
+class CleanCommandExecutor( CommandExecutor ):
+	def __init__( self, **_args ):
+		super( CleanCommandExecutor, self ).__init__( os.getcwd() )
+	def execute( self ):
+		if not os.access( self.getDBPath(), os.W_OK ):
+			print( "ERROR: No database found at " + self.getDBPath() )
+			return
+		try:
+			os.remove( self.getDBPath() )
+		except os.error:
+			print( "ERROR: Some problems occured during database cleaning." )
+
+		InitializeCommandExecutor( dest_dir=self.getDBContainingDir(), print_success_message = False ).execute()
+		print( "Database has been cleaned successfully.")
+
+	
 ###############################################################################
 # Entry point:
 
@@ -83,9 +195,16 @@ def main():
 	parser_add.set_defaults(executor=AddCommandExecutor)
 	parser_add.add_argument('result_dir', help="Directory which was produced by scan-build.")
 
+	# clean command
+	parser_add = subparsers.add_parser(
+		'clean', 
+		description="Cleans the database", 
+		help="Completely cleans the database")
+	parser_add.set_defaults(executor=CleanCommandExecutor)
+
 	# parse command line arguments
 	given_args = top_parser.parse_args()
-	commandExecutor = given_args.executor(given_args)
+	commandExecutor = given_args.executor(**vars( given_args ) )
 	commandExecutor.execute()
 
 if __name__ == '__main__':
