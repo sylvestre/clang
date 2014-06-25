@@ -91,6 +91,9 @@ class Launch(_Base):
     ## Some other information...
     time                = Column(DateTime)
 
+    def __repr__(self):
+        return "Scan-build's launch #%d on %s" % (self.id, self.time.strftime("%b %d %Y %H:%M:%S"))
+
  
 ###############################################################################
 

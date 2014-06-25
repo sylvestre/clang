@@ -51,7 +51,6 @@ class DiagnosticLoader:
 			    col                 = piecePl['location']['col'],
 			    file                = self.getFile( _fileNames[ piecePl['location']['file'] ] )	
 			)
-			print pieceId
 			pieceId = pieceId + 1
 			pathPiece.launches.append( self.__launch )
 			yield pathPiece, created
@@ -85,14 +84,21 @@ class DiagnosticLoader:
 			self.__session.commit()
 
 
-
 ###############################################################################
 # Command executors:
+
+class DatabaseAccessProblem( BaseException ):
+	pass
+
+class NoInitializedDatabase( DatabaseAccessProblem ):
+	pass
 
 class CommandExecutor(object):
 	def __init__( self, _containingDir ):
 		self.__dbContainingDir = os.path.abspath( _containingDir )
 		self.__dbPath = self.__dbContainingDir + '/' + self.getDatabaseName()
+		self.__engine = None
+
 	def getDatabaseName( self ):
 		#return ".tracking-platform.db"
 		return "tp_db.sqlite" 
@@ -100,27 +106,42 @@ class CommandExecutor(object):
 		return self.__dbContainingDir
 	def getDBPath( self ):
 		return self.__dbPath
+	
+
+	def checkDatabaseAvailability( self ):
+		if not os.path.exists( self.getDBPath() ):
+			raise NoInitializedDatabase()
+		if not os.access( self.getDBPath(), os.W_OK ):
+			raise DatabaseAccessProblem()
+	def connect( self, _canBeNonexistent = False ):
+		if not self.__engine:
+			if not _canBeNonexistent:
+				self.checkDatabaseAvailability()
+			self.__engine = create_engine('sqlite:///' + self.getDBPath(), echo=False)
+		Session = sessionmaker(bind=self.__engine)
+		return Session()
+	def getEngine( self ):
+		if not self.__engine:
+			raise RuntimeError()
+		return self.__engine
+
+
 	def execute( self ):
 		pass
 
 class AddCommandExecutor( CommandExecutor ):
 	def __init__( self, **_args ):
 		super( AddCommandExecutor, self ).__init__( os.getcwd() )
-		self.__resultsDir = os.path.abspath( _args['result_dir']	 )
+		self.__resultsDir = os.path.abspath( _args['result_dir'] )
 	def execute( self ):
-		if not os.access( self.getDBPath(), os.W_OK ):
-			print( "ERROR: No initialized database in the current directory. Do 'tracking-platform init' before.")
-			return
+		self.checkDatabaseAvailability()
 
 		files = glob.glob( self.__resultsDir + '/*.plist' )
 		if not files:
 			print( "ERROR: No plist files are presented in " + self.__resultsDir )
-	
-		# TODO: Add nice error message if no tables are initialized
-		engine = create_engine('sqlite:///' + self.getDBPath(), echo=False)
-		Session = sessionmaker(bind=engine)
-		session = Session()
+			return
 
+		session = self.connect()
 		diagLoader = DiagnosticLoader( session )
 		for file in files:
 			diagLoader.load( file )
@@ -139,15 +160,14 @@ class InitializeCommandExecutor( CommandExecutor ):
 			try:
 				os.makedirs( self.getDBContainingDir() )
 			except os.error:
-				print( "ERROR: Cannot create directory for the database: " + self.getDBContainingDir() )
-				return
+				raise DatabaseAccessProblem()
 
 		if os.path.exists( self.getDBPath() ):
 			print( "ERROR: Database is already intialized at " + self.getDBPath() )
 			return
 
-		engine = create_engine('sqlite:///' + self.getDBPath(), echo=False)
-		Tables.initializeTables( engine )
+		self.connect(_canBeNonexistent = True)
+		Tables.initializeTables( self.getEngine() )
 
 		if self.__printSuccessMessage:
 			print( "Database has been successfully initialized at " + self.getDBPath() )
@@ -157,16 +177,43 @@ class CleanCommandExecutor( CommandExecutor ):
 	def __init__( self, **_args ):
 		super( CleanCommandExecutor, self ).__init__( os.getcwd() )
 	def execute( self ):
-		if not os.access( self.getDBPath(), os.W_OK ):
-			print( "ERROR: No database found at " + self.getDBPath() )
-			return
+		self.checkDatabaseAvailability()
 		try:
 			os.remove( self.getDBPath() )
 		except os.error:
-			print( "ERROR: Some problems occured during database cleaning." )
+			raise DatabaseAccessProblem()
 
 		InitializeCommandExecutor( dest_dir=self.getDBContainingDir(), print_success_message = False ).execute()
 		print( "Database has been cleaned successfully.")
+
+
+class LogCommandExecutor( CommandExecutor ):
+	def __init__( self, **_args ):
+		super( LogCommandExecutor, self ).__init__( os.getcwd() )
+	
+	def getIndent( self ):
+		return '\t'
+
+	def showDifference( self, _oldLaunch, _newLaunch ):
+		newDiagnostics 	= set( _newLaunch.diagnostics )
+		oldDiagnostics 	= set( _oldLaunch.diagnostics )
+		fixed 			= oldDiagnostics.difference( newDiagnostics )
+		notFixed 		= newDiagnostics.intersection( oldDiagnostics )
+		new				= newDiagnostics.difference( oldDiagnostics )
+		print (self.getIndent() + "Fixed: " 	+ str( len( fixed )) 	) 
+		print (self.getIndent() + "Not fixed: " + str( len( notFixed )) ) 
+		print (self.getIndent() + "New: " 		+ str( len( new )) 		) 
+
+	def execute( self ):
+		session = self.connect()
+		newLaunch = None
+		oldLaunch = None
+		for launch in reversed( session.query( Tables.Launch ).all() ):
+			newLaunch = oldLaunch
+			oldLaunch = launch
+			if newLaunch:
+				self.showDifference(oldLaunch, newLaunch)
+			print launch
 
 	
 ###############################################################################
@@ -183,29 +230,46 @@ def main():
 	parser_initialize = subparsers.add_parser(
 		'init', 
 		description="Initializes database", 
-		help='initializes database in a current directory')
+		help='Initializes database in a current directory.')
 	parser_initialize.set_defaults(executor=InitializeCommandExecutor)
 	parser_initialize.add_argument('dest_dir', help="Directory where database will be placed.", nargs = '?', default = '.')
+
 
 	# add command
 	parser_add = subparsers.add_parser(
 		'add', 
 		description="Adds results to database", 
-		help="adds scan-build's results to the database")
+		help="Adds scan-build's results to the database.")
 	parser_add.set_defaults(executor=AddCommandExecutor)
 	parser_add.add_argument('result_dir', help="Directory which was produced by scan-build.")
 
+
 	# clean command
-	parser_add = subparsers.add_parser(
+	parser_clean = subparsers.add_parser(
 		'clean', 
 		description="Cleans the database", 
 		help="Completely cleans the database")
-	parser_add.set_defaults(executor=CleanCommandExecutor)
+	parser_clean.set_defaults(executor=CleanCommandExecutor)
+
+
+	# log command
+	parser_log = subparsers.add_parser(
+		'log', 
+		description="Shows list of scans", 
+		help="Shows list of all scans that have been added to the database.")
+	parser_log.set_defaults(executor=LogCommandExecutor)
+
+	
 
 	# parse command line arguments
 	given_args = top_parser.parse_args()
 	commandExecutor = given_args.executor(**vars( given_args ) )
+	#try:
 	commandExecutor.execute()
+	#except NoInitializedDatabase:
+	#	print( "ERROR: No initialized database in the current directory. Do 'tracking-platform init' before.")
+	#except DatabaseAccessProblem:
+	#	print( "ERROR: Problem with accessing database." ) 
 
 if __name__ == '__main__':
 	main()
