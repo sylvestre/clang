@@ -34,7 +34,8 @@ class File(_Base):
 
     id      = Column(Integer, primary_key=True)
     name    = Column(String)
-    
+    def __repr__(self):
+        return "%s" % (self.name)
 
 
 class Diagnostic(_Base):
@@ -65,6 +66,13 @@ class Diagnostic(_Base):
     file                = relationship("File")
     launches            = relationship("Launch", secondary=launches_diagnostics, backref='diagnostics')
 
+    def __repr__(self):
+        return    ("Description: %s\n"
+                  "Category:    %s\n"
+                  "Type:        %s\n"
+                  "Unique ID:   %s\n"
+                  "Location:    %s(%d:%d)\n")  % (self.description, self.category, self.type, self.issue_hash, self.file, self.line, self.col)
+
 class PathPiece(_Base):
     __tablename__ = 'path_pieces'
 
@@ -91,8 +99,10 @@ class Launch(_Base):
     ## Some other information...
     time                = Column(DateTime)
 
+
+    name                = Column(String) # Name of the directory with results
     def __repr__(self):
-        return "Scan-build's launch #%d on %s" % (self.id, self.time.strftime("%b %d %Y %H:%M:%S"))
+        return "Scan-build's launch #%d on %s \nloaded from %s" % (self.id, self.time.strftime("%b %d %Y %H:%M:%S"), self.name)
 
  
 ###############################################################################

@@ -16,9 +16,11 @@ from sqlalchemy.orm import sessionmaker
 import plistlib
 
 class DiagnosticLoader:
-	def __init__(self, _session):
+	def __init__(self, _session, _dirName):
 		self.__session = _session
-		self.__launch = Tables.Launch( time = datetime.datetime.now() )
+		self.__launch = Tables.Launch( time = datetime.datetime.now(), name = _dirName )
+		self.__session.add( self.__launch )
+		self.__session.commit()
 
 	def getOrCreate(self, _table, **_kwargs):
 	    instance = self.__session.query(_table).filter_by(**_kwargs).first()
@@ -133,19 +135,31 @@ class AddCommandExecutor( CommandExecutor ):
 	def __init__( self, **_args ):
 		super( AddCommandExecutor, self ).__init__( os.getcwd() )
 		self.__resultsDir = os.path.abspath( _args['result_dir'] )
-	def execute( self ):
-		self.checkDatabaseAvailability()
+		self.__loadManyLaunches = ( 'fewruns' in _args )
 
-		files = glob.glob( self.__resultsDir + '/*.plist' )
+	def loadDiagnostics( self, _dir ):
+		self.checkDatabaseAvailability()
+		files = glob.glob( _dir + '/*.plist' )
 		if not files:
-			print( "ERROR: No plist files are presented in " + self.__resultsDir )
-			return
+			print( "WARNING: No plist files are presented in " + self.__resultsDir )
 
 		session = self.connect()
-		diagLoader = DiagnosticLoader( session )
+		diagLoader = DiagnosticLoader( session, _dir )
 		for file in files:
 			diagLoader.load( file )
-		
+
+	def execute( self ):
+		if not self.__loadManyLaunches:
+			self.loadDiagnostics( self.__resultsDir )
+			return
+
+		for name in sorted( os.listdir(self.__resultsDir) ):
+			absPath = os.path.join(self.__resultsDir, name)
+			if os.path.isdir(absPath):
+				self.loadDiagnostics( absPath )
+				print "Added diagnostics from " + absPath
+
+
 
 class InitializeCommandExecutor( CommandExecutor ):
 	def __init__( self, **_args ):
@@ -176,14 +190,18 @@ class InitializeCommandExecutor( CommandExecutor ):
 class CleanCommandExecutor( CommandExecutor ):
 	def __init__( self, **_args ):
 		super( CleanCommandExecutor, self ).__init__( os.getcwd() )
+		self.__dontCreate = 'remove' in _args
 	def execute( self ):
+		if not os.path.exists( self.getDBPath() ):
+			return
 		self.checkDatabaseAvailability()
 		try:
 			os.remove( self.getDBPath() )
 		except os.error:
 			raise DatabaseAccessProblem()
 
-		InitializeCommandExecutor( dest_dir=self.getDBContainingDir(), print_success_message = False ).execute()
+		if not self.__dontCreate:
+			InitializeCommandExecutor( dest_dir=self.getDBContainingDir(), print_success_message = False ).execute()
 		print( "Database has been cleaned successfully.")
 
 
@@ -213,7 +231,24 @@ class LogCommandExecutor( CommandExecutor ):
 			oldLaunch = launch
 			if newLaunch:
 				self.showDifference(oldLaunch, newLaunch)
+				print "\n"
+			print "################################################################"
 			print launch
+
+
+class ShowCommandExecutor( CommandExecutor ):
+	def __init__( self, **_args ):
+		super( ShowCommandExecutor, self ).__init__( os.getcwd() )
+		self.__n = _args[ 'n' ]
+	def execute( self ):
+		session = self.connect()
+		launch = session.query( Tables.Launch ).filter( Tables.Launch.id == self.__n ).one()
+		print launch
+		print "################################################################"
+		for diag in launch.diagnostics:
+			print "\n",
+			print diag
+			print "################################################################"
 
 	
 ###############################################################################
@@ -241,7 +276,8 @@ def main():
 		description="Adds results to database", 
 		help="Adds scan-build's results to the database.")
 	parser_add.set_defaults(executor=AddCommandExecutor)
-	parser_add.add_argument('result_dir', help="Directory which was produced by scan-build.")
+	parser_add.add_argument('--few-runs', dest = 'fewruns', action='store_true', help="Assumes directory containing a few scan-build's runs and adds all of them.")
+	parser_add.add_argument('result_dir', help="Directory which was produced by one scan-build's run.")
 
 
 	# clean command
@@ -250,26 +286,34 @@ def main():
 		description="Cleans the database", 
 		help="Completely cleans the database")
 	parser_clean.set_defaults(executor=CleanCommandExecutor)
-
+	parser_clean.add_argument('--remove', dest = 'remove', action='store_true', help="Removes database file completely.")
 
 	# log command
 	parser_log = subparsers.add_parser(
 		'log', 
-		description="Shows list of scans", 
-		help="Shows list of all scans that have been added to the database.")
+		description="Shows list of scan-build's runs", 
+		help="Shows list of all scan-build's runs that have been added to the database.")
 	parser_log.set_defaults(executor=LogCommandExecutor)
 
+
+	# show command
+	parser_show = subparsers.add_parser(
+		'show', 
+		description="Shows list of diagnostics", 
+		help="Shows all diagnostics for specified number of scan-build's run.")
+	parser_show.set_defaults(executor=ShowCommandExecutor)
+	parser_show.add_argument('n', type=int, help="Directory which was produced by one scan-build's run.")
 	
 
 	# parse command line arguments
 	given_args = top_parser.parse_args()
 	commandExecutor = given_args.executor(**vars( given_args ) )
-	#try:
-	commandExecutor.execute()
-	#except NoInitializedDatabase:
-	#	print( "ERROR: No initialized database in the current directory. Do 'tracking-platform init' before.")
-	#except DatabaseAccessProblem:
-	#	print( "ERROR: Problem with accessing database." ) 
+	try:
+		commandExecutor.execute()
+	except NoInitializedDatabase:
+		print( "ERROR: No initialized database in the current directory. Do 'tracking-platform init' before.")
+	except DatabaseAccessProblem:
+		print( "ERROR: Problem with accessing database." ) 
 
 if __name__ == '__main__':
 	main()
