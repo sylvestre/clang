@@ -1,5 +1,9 @@
 #!/usr/bin/env sh
 
+make -p project_v1/bin
+make -p project_v2/bin
+make -p project_v3/bin
+
 rm -rf scan_results/*
 ../tracking-platform clean --remove
 

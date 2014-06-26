@@ -6,9 +6,9 @@ if __name__ == '__main__':
     raise SystemExit
 
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Table, Column, Integer, String, DateTime, ForeignKey, UniqueConstraint
+from sqlalchemy import Table, Column, Integer, Boolean, String, DateTime, ForeignKey, UniqueConstraint
 from sqlalchemy.orm import relationship, backref
-
+from sqlalchemy.ext.hybrid import hybrid_property
 _Base = declarative_base()
 
 
@@ -64,14 +64,17 @@ class Diagnostic(_Base):
     col                 = Column(Integer)    
     file_id             = Column(Integer, ForeignKey('files.id'))
     file                = relationship("File")
-    launches            = relationship("Launch", secondary=launches_diagnostics, backref='diagnostics')
+    launches            = relationship("Launch", secondary=launches_diagnostics, back_populates='diagnostics')
+
+    false_positive      = Column( Boolean )
 
     def __repr__(self):
-        return    ("Description: %s\n"
-                  "Category:    %s\n"
-                  "Type:        %s\n"
-                  "Unique ID:   %s\n"
-                  "Location:    %s(%d:%d)\n")  % (self.description, self.category, self.type, self.issue_hash, self.file, self.line, self.col)
+        return    ("Description:    %s\n"
+                  "Category:        %s\n"
+                  "Type:            %s\n"
+                  "Unique ID:       %s\n"
+                  "False positive:  %s\n"
+                  "Location:        %s(%d:%d)\n")  % (self.description, self.category, self.type, self.issue_hash, self.false_positive, self.file, self.line, self.col)
 
 class PathPiece(_Base):
     __tablename__ = 'path_pieces'
@@ -99,10 +102,29 @@ class Launch(_Base):
     ## Some other information...
     time                = Column(DateTime)
 
+    # valid_diagnostics   = column_property(
+    #     select(Diagnostic).where(Diagnostic.false_positive==False)
+    # )
+    diagnostics                     = relationship("Diagnostic", secondary=launches_diagnostics, back_populates='launches')
+    
+    @hybrid_property
+    def valid_diagnostics(self):
+        return filter(lambda x: x.false_positive == False, self.diagnostics)
+
+    @hybrid_property
+    def false_positive_diagnostics(self):
+        return filter(lambda x: x.false_positive == True, self.diagnostics)
 
     name                = Column(String) # Name of the directory with results
     def __repr__(self):
-        return "Scan-build's launch #%d on %s \nloaded from %s" % (self.id, self.time.strftime("%b %d %Y %H:%M:%S"), self.name)
+        return  ("Scan-build's launch #%d on %s\n"
+                "loaded from %s\n" 
+                "\tFalse-positive diagnostics:  %d\n"
+                "\tValid diagnostics:           %d\n") % (  self.id, 
+                                                            self.time.strftime("%b %d %Y %H:%M:%S"), 
+                                                            self.name,
+                                                            len(self.false_positive_diagnostics),
+                                                            len(self.valid_diagnostics))
 
  
 ###############################################################################

@@ -9,7 +9,7 @@ import logging
 import datetime
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-
+import sqlalchemy.orm.exc
 ###############################################################################
 # Plist reader:
 
@@ -78,6 +78,7 @@ class DiagnosticLoader:
 				diag.line               		= diagPl['location']['line']
 				diag.col                		= diagPl['location']['col']
 				diag.file              			= self.getFile( fileNames[ diagPl['location']['file'] ] )
+				diag.false_positive				= False
 			
 			diag.launches.append( self.__launch  )
 			for piece, peaceCreated in self.createPath( fileNames, diagPl['path'] ):
@@ -191,7 +192,7 @@ class InitializeCommandExecutor( CommandExecutor ):
 class CleanCommandExecutor( CommandExecutor ):
 	def __init__( self, **_args ):
 		super( CleanCommandExecutor, self ).__init__( os.getcwd() )
-		self.__dontCreate = 'remove' in _args
+		self.__dontCreate = _args['remove']
 	def execute( self ):
 		if not os.path.exists( self.getDBPath() ):
 			return
@@ -214,14 +215,14 @@ class LogCommandExecutor( CommandExecutor ):
 		return '\t'
 
 	def showDifference( self, _oldLaunch, _newLaunch ):
-		newDiagnostics 	= set( _newLaunch.diagnostics )
-		oldDiagnostics 	= set( _oldLaunch.diagnostics )
+		newDiagnostics 	= set( _newLaunch.valid_diagnostics )
+		oldDiagnostics 	= set( _oldLaunch.valid_diagnostics )
 		fixed 			= oldDiagnostics.difference( newDiagnostics )
 		notFixed 		= newDiagnostics.intersection( oldDiagnostics )
 		new				= newDiagnostics.difference( oldDiagnostics )
-		print (self.getIndent() + "Fixed: " 	+ str( len( fixed )) 	) 
-		print (self.getIndent() + "Not fixed: " + str( len( notFixed )) ) 
-		print (self.getIndent() + "New: " 		+ str( len( new )) 		) 
+		print (self.getIndent() + "Fixed diagnostics:           " + str( len( fixed )) 	) 
+		print (self.getIndent() + "Not fixed diagnostics:       " + str( len( notFixed )) ) 
+		print (self.getIndent() + "New diagnostics:             " + str( len( new )) 		) 
 
 	def execute( self ):
 		session = self.connect()
@@ -237,19 +238,62 @@ class LogCommandExecutor( CommandExecutor ):
 			print launch
 
 
-class ShowCommandExecutor( CommandExecutor ):
+class BrowseCommandExecutor( CommandExecutor ):
 	def __init__( self, **_args ):
-		super( ShowCommandExecutor, self ).__init__( os.getcwd() )
+		super( BrowseCommandExecutor, self ).__init__( os.getcwd() )
 		self.__n = _args[ 'n' ]
+		self.__browseAll = _args['all']
 	def execute( self ):
 		session = self.connect()
 		launch = session.query( Tables.Launch ).filter( Tables.Launch.id == self.__n ).one()
 		print launch
 		print "################################################################"
-		for diag in launch.diagnostics:
+		for diag in (launch.diagnostics if self.__browseAll else launch.valid_diagnostics):
 			print "\n",
 			print diag
 			print "################################################################"
+
+class ShowCommandExecutor( CommandExecutor ):
+	def __init__( self, **_args ):
+		super( ShowCommandExecutor, self ).__init__( os.getcwd() )
+		self.__id = _args[ 'id' ]
+	def execute( self ):
+		session = self.connect()
+		diag = session.query( Tables.Diagnostic ).filter( Tables.Diagnostic.issue_hash == self.__id ).one()
+		print diag
+		print "Diagnostic was appeared in following scan-build's runs:\n"
+		showSeparationLine = False
+		for launch in diag.launches:
+			if showSeparationLine:
+				print "----------------------------------------------\n"
+			print launch
+			showSeparationLine = True
+
+class SFPCommandExecutor( CommandExecutor ):
+	def __init__( self, **_args ):
+		super( SFPCommandExecutor, self ).__init__( os.getcwd() )
+	def execute( self ):
+		session = self.connect()
+		diags = session.query( Tables.Diagnostic ).filter( Tables.Diagnostic.false_positive == True ).all()
+		showSeparationLine = False
+		for diag in diags:
+			if showSeparationLine:
+				print "----------------------------------------------\n"
+			print diag
+			showSeparationLine = True
+
+class MarkCommandExecutor( CommandExecutor ):
+	def __init__( self, **_args ):
+		super( MarkCommandExecutor, self ).__init__( os.getcwd() )
+		self.__id = _args[ 'id' ]
+		self.__status = _args[ 'status' ]
+	def execute( self ):
+		session = self.connect()
+		# TODO: handle incorrect diag's id
+		diag = session.query( Tables.Diagnostic ).filter( Tables.Diagnostic.issue_hash == self.__id ).one()
+		diag.false_positive = (self.__status == 'false-positive')
+		session.commit()
+		print "Diagnostic " + self.__id + "marked as " + self.__status
 
 	
 ###############################################################################
@@ -297,20 +341,50 @@ def main():
 	parser_log.set_defaults(executor=LogCommandExecutor)
 
 
+	# browse command
+	parser_browse = subparsers.add_parser(
+		'browse', 
+		description="Shows list of diagnostics", 
+		help="Shows all diagnostics for specified number of scan-build's run.")
+	parser_browse.set_defaults(executor=BrowseCommandExecutor)
+	parser_browse.add_argument('-a', '--all', dest = 'all', action='store_true', help="Browses false-positive diagnostics too.")
+	parser_browse.add_argument('n', type=int, help="Directory which was produced by one scan-build's run.")
+	
+
 	# show command
 	parser_show = subparsers.add_parser(
 		'show', 
-		description="Shows list of diagnostics", 
-		help="Shows all diagnostics for specified number of scan-build's run.")
+		description="Show diagnostic by unique id", 
+		help="Show diagnostic by unique id")
 	parser_show.set_defaults(executor=ShowCommandExecutor)
-	parser_show.add_argument('n', type=int, help="Directory which was produced by one scan-build's run.")
-	
+	parser_show.add_argument('id', help="Diagnostic's unique id.")
+
+
+	# show-false-positives command
+	parser_sfp = subparsers.add_parser(
+		'show-false-positives', 
+		description="Shows all false-positive diagnostics", 
+		help="Shows all false-positive diagnostics")
+	parser_sfp.set_defaults(executor=SFPCommandExecutor)
+
+
+	# mark command
+	parser_mark = subparsers.add_parser(
+		'mark', 
+		description="Marks or unmarks false-positive status of diagnostic", 
+		help="Marks or unmarks false-positive status of diagnostic")
+	parser_mark.set_defaults(executor=MarkCommandExecutor)
+	parser_mark.add_argument('status', choices=['false-positive','valid'], help="marking status")
+	parser_mark.add_argument('id', help="Diagnostic's unique id.")
+
 
 	# parse command line arguments
 	given_args = top_parser.parse_args()
 	commandExecutor = given_args.executor(**vars( given_args ) )
 	try:
 		commandExecutor.execute()
+	except sqlalchemy.orm.exc.NoResultFound:
+		print ( "ERROR: No objects were found." )
 	except NoInitializedDatabase:
 		print( "ERROR: No initialized database in the current directory. Do 'tracking-platform init' before.")
 	except DatabaseAccessProblem:
