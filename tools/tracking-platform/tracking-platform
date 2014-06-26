@@ -40,6 +40,7 @@ class DiagnosticLoader:
 		return self.getOrCreate( Tables.File, name = _fileName )[0]
 
 	def createPath( self, _fileNames, _plist):
+		# TODO support control flow path piece
 		pieceId = 0
 		for piecePl in _plist:
 			if piecePl['kind'] != 'event':
@@ -62,7 +63,7 @@ class DiagnosticLoader:
 	def createDiagnosticsFromDict( self, _plist ):
 		fileNames = _plist[ 'files' ]
 		diagnosticsPl = _plist[ 'diagnostics' ]
-		# TODO revise all possible attributes in plist file.
+		
 
 		for diagPl in diagnosticsPl:
 			uniqueId = diagPl['issue_hash']
