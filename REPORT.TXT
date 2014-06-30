@@ -9,3 +9,7 @@
 16.06 - 20.06 - Getting on with SQLAlchemy.
                 Implemented base of Tracking-Platform
                 Wrote prototype of Database for ORM
+23.06 - 27.06 - Implementation of the filling database from plist format.
+		Fixed problems with untested SqlAlchemy's mappings.
+		Implemented 'init', 'add', 'show', 'log', etc. commands for
+		database's managing and exlopring. 
