@@ -1,7 +1,7 @@
 19.05 - 23.05 - Nothing
 26.05 - 30.05 - Nothing
 02.06 - 06.06 - Environment setup, BugID in clang's plist output, 
-		LLVM testing documentation reading, testing planning,
+                LLVM testing documentation reading, testing planning,
                 Base locations on the semantic model research,
 09.06 - 13.06 - Clang internals documentation reading,
                 Base locations on the semantic model,
@@ -10,6 +10,8 @@
                 Implemented base of Tracking-Platform
                 Wrote prototype of Database for ORM
 23.06 - 27.06 - Implementation of the filling database from plist format.
-		Fixed problems with untested SqlAlchemy's mappings.
-		Implemented 'init', 'add', 'show', 'log', etc. commands for
-		database's managing and exlopring. 
+                Fixed problems with untested SqlAlchemy's mappings.
+                Implemented 'init', 'add', 'show', 'log', etc. commands for
+                database's managing and exlopring.
+30.06 - 04.07 - Web-development information reading
+                Flask documentation reading and trying at work
