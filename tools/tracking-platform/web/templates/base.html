@@ -1,0 +1,25 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}Bootstrap starter template{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link href="{{url_for('static', filename='starter-template.css')}}" rel="stylesheet">
+{% endblock styles %}
+
+{% block navbar %}
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Tracking platform</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        {# TODO: Mark active page in header #}
+        <li><a href="#">Launches</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+{%- endblock navbar %}

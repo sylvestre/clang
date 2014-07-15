@@ -23,6 +23,9 @@ Done:
   3.3 Fill database from clang's plist-output.
   3.4 Tagging of false positive
   3.5 Evolution of number of defects (per category or not).
+4 Improve scan-view (should use Tracking Platform)
+  4.1 Choose backend (flask is the best candidate now.)
+  4.2 Choose frontend (twitter bootstrap is the best candidate now.)
 
 --------------------------------------------------------
 
@@ -30,14 +33,11 @@ Not finished:
 
 --------------------------------------------------------
 
-4 Improve scan-view (should use Tracking Platform)
-  4.1 Choose backend (flask is the best candidate now.)
-  4.2 Choose frontend (twitter bootstrap is the best candidate now.)
   4.3 Graphic of the evolution over time
   4.4 Tagging of false positive
   4.5 Evolution of number of defects (per category or not).
   4.6 Comparison between build's results
-
+  4.7 Make web-site look nicer
 
 5 Advanced heuristics for matching violations.
   Research is needed.

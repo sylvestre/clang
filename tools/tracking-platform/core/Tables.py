@@ -105,7 +105,7 @@ class Launch(_Base):
     # valid_diagnostics   = column_property(
     #     select(Diagnostic).where(Diagnostic.false_positive==False)
     # )
-    diagnostics                     = relationship("Diagnostic", secondary=launches_diagnostics, back_populates='launches')
+    diagnostics         = relationship("Diagnostic", secondary=launches_diagnostics, back_populates='launches')
     
     @hybrid_property
     def valid_diagnostics(self):

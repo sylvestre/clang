@@ -15,3 +15,6 @@
                 database's managing and exlopring.
 30.06 - 04.07 - Web-development information reading
                 Flask documentation reading and trying at work
+07.07 - 11.07 - Flask, Jinja2, Twitter bootstrap documentation reading,
+                added virtualenv for web-site, imported simple design into,
+                added launches showing web-site
